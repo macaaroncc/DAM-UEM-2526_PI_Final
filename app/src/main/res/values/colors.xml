@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="brand_orange">#E58C2A</color>
+    <color name="link_blue">#2F80ED</color>
+    <color name="logo_stroke">#DDDDDD</color>
+    <color name="appbar_black">#0A0A0A</color>
+</resources>

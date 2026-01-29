@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name">PI2DAM</string>
+
+    <string name="brand_name">BAHJ</string>
+    <string name="cd_logo">Logo</string>
+
+    <string name="title_login">Iniciar Sesión</string>
+    <string name="hint_user_email">Usuario/Email</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="link_forgot_password">Olvido contraseña</string>
+    <string name="link_help">Ayuda ?</string>
+    <string name="btn_login">Entrar</string>
+    <string name="btn_go_register">Registrarme</string>
+
+    <string name="title_register">Registar</string>
+    <string name="hint_user">Usuario</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_repeat_password">Repetir contraseña</string>
+    <string name="btn_register">Registrarme</string>
+
+    <string name="title_reset_password">Restablecer contraseña</string>
+    <string name="label_new_password">Introduce nueva contraseña :</string>
+    <string name="label_repeat_new_password">Introduce otra vez la nueva contraseña :</string>
+    <string name="btn_reset_password">Reset Password</string>
+    <string name="btn_back">Volver</string>
+
+    <string name="title_home">Pagina Principal</string>
+    <string name="hint_search">Buscar</string>
+    <string name="filter_recent">Reciente</string>
+    <string name="filter_low_stock">Stock Bajo</string>
+    <string name="filter_high_price">Mayor Precio</string>
+    <string name="filter_low_price">Menor Precio</string>
+    <string name="inventory_title">Inventario</string>
+
+    <string name="title_stock_management">Gestión de Stock</string>
+    <string name="label_product">Producto</string>
+    <string name="label_category">Categoría</string>
+    <string name="label_supplier">Proveedor</string>
+    <string name="label_quantity">Cantidad</string>
+    <string name="label_price">Precio</string>
+    <string name="label_location">Ubicación: Almacén</string>
+    <string name="switch_low_stock">Notificar Stock bajo</string>
+    <string name="btn_save_part">Guardar pieza</string>
+
+    <string name="title_payment">Añadir Nueva Tarjeta</string>
+    <string name="label_card_number">Número de tarjeta</string>
+    <string name="label_card_holder">Titular de la tarjeta</string>
+    <string name="hint_full_name">Nombre Completo</string>
+    <string name="label_expiry">Mes y año</string>
+    <string name="label_cvv">CVV</string>
+    <string name="btn_add_card">Añadir tarjeta</string>
+
+    <string name="title_help">Necesitas Ayuda?</string>
+
+    <string name="title_menu">Menú</string>
+    <string name="menu_home">Pagina Principal</string>
+    <string name="menu_payment">Pago</string>
+    <string name="menu_help">Ayuda</string>
+    <string name="menu_logout">Cerrar sesión</string>
+</resources>
