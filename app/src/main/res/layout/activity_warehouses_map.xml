@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MenuActivity">
+    tools:context=".WarehousesMapActivity">
 
     <LinearLayout
         android:id="@+id/appbar"
@@ -22,8 +22,7 @@
         <ImageView
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:contentDescription="@string/cd_logo"
-          />
+            android:contentDescription="@string/cd_logo" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -40,13 +39,12 @@
             android:layout_weight="1" />
 
         <ImageView
-            android:id="@+id/btnHelp"
+            android:id="@+id/btnAppbarHelp"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:contentDescription="@string/title_help"
             android:padding="8dp"
-            android:src="@android:drawable/ic_menu_help"
-          />
+            android:src="@android:drawable/ic_menu_help" />
 
         <ImageView
             android:id="@+id/btnAppbarMenu"
@@ -54,8 +52,7 @@
             android:layout_height="40dp"
             android:contentDescription="Menu"
             android:padding="8dp"
-            android:src="@android:drawable/ic_menu_more"
-            />
+            android:src="@android:drawable/ic_menu_more" />
 
     </LinearLayout>
 
@@ -82,65 +79,19 @@
             android:layout_marginStart="12dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/title_menu"
+            android:text="@string/title_warehouses_map"
             android:textStyle="bold" />
 
     </LinearLayout>
 
-    <LinearLayout
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:orientation="vertical"
-        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/topRow">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnMenuHome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/menu_home"
-            app:backgroundTint="@color/brand_orange" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnMenuPayment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/menu_payment"
-            app:backgroundTint="@color/brand_orange" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnMenuWarehousesMap"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/menu_warehouses_map"
-            app:backgroundTint="@color/brand_orange" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnMenuHelp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/menu_help"
-            app:backgroundTint="@color/brand_orange" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnMenuLogout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/menu_logout"
-            app:backgroundTint="@color/brand_orange" />
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@id/topRow" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

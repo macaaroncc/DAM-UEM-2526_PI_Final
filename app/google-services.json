@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1509391603",
+    "project_id": "pi2dam-fe09a",
+    "storage_bucket": "pi2dam-fe09a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1509391603:android:23b390dc4e7cee66140b86",
+        "android_client_info": {
+          "package_name": "com.example.pi2dam"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEI0sD4d_g49c9soAoFSWRFw1_nIJLPFA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -38,6 +38,10 @@ class MenuActivity : AppCompatActivity() {
             startActivity(Intent(this, PaymentActivity::class.java))
         }
 
+        findViewById<MaterialButton>(R.id.btnMenuWarehousesMap).setOnClickListener {
+            startActivity(Intent(this, WarehousesMapActivity::class.java))
+        }
+
         findViewById<MaterialButton>(R.id.btnMenuHelp).setOnClickListener {
             startActivity(Intent(this, HelpActivity::class.java))
         }
