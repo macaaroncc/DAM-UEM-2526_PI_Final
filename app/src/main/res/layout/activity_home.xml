@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/app_background"
     tools:context=".HomeActivity">
 
     <LinearLayout
@@ -12,9 +13,11 @@
         android:layout_width="0dp"
         android:layout_height="64dp"
         android:background="@color/appbar_black"
+        android:elevation="4dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -23,7 +26,8 @@
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:contentDescription="@string/cd_logo"
-            />
+            android:src="@drawable/ic_launcher_foreground"
+            android:tint="@color/brand_orange" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -46,7 +50,7 @@
             android:background="@android:color/transparent"
             android:contentDescription="@string/title_help"
             android:src="@android:drawable/ic_menu_help"
-           />
+            android:tint="@android:color/white" />
 
         <ImageButton
             android:id="@+id/btnMenu"
@@ -55,7 +59,7 @@
             android:background="@android:color/transparent"
             android:contentDescription="Menu"
             android:src="@android:drawable/ic_menu_more"
-             />
+            android:tint="@android:color/white" />
 
     </LinearLayout>
 
@@ -72,18 +76,22 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnBack"
+            style="@style/Widget.PI2DAM.Button.Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/btn_back" />
+            android:text="@string/btn_back"
+            app:icon="@android:drawable/ic_media_previous"
+            app:iconTint="@color/brand_orange" />
 
         <TextView
+            style="@style/TextAppearance.PI2DAM.ToolbarTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/title_home"
-            android:textStyle="bold" />
+            android:textColor="@color/text_primary" />
 
     </LinearLayout>
 
@@ -104,7 +112,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilSearchHome"
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                style="@style/Widget.PI2DAM.TextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_search"
@@ -132,7 +140,7 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnFilterRecent"
-                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    style="@style/Widget.PI2DAM.Button.Outlined"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -140,7 +148,7 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnFilterLowStock"
-                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    style="@style/Widget.PI2DAM.Button.Outlined"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -148,7 +156,7 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnFilterHighPrice"
-                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    style="@style/Widget.PI2DAM.Button.Outlined"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -156,7 +164,7 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnFilterLowPrice"
-                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    style="@style/Widget.PI2DAM.Button.Outlined"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"

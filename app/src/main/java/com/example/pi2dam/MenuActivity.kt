@@ -5,8 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.pi2dam.model.EmployeeProfile.Companion.ROLE_ADMIN
 import com.google.android.material.button.MaterialButton
 
 class MenuActivity : AppCompatActivity() {
@@ -15,11 +14,7 @@ class MenuActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_menu)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        findViewById<View>(R.id.main).applySystemBarsPadding()
 
         findViewById<View>(R.id.btnBack).setOnClickListener { finish() }
         findViewById<View>(R.id.btnHelp).setOnClickListener {
@@ -34,6 +29,17 @@ class MenuActivity : AppCompatActivity() {
             finish()
         }
 
+        val btnUsers = findViewById<MaterialButton>(R.id.btnMenuUsers)
+        val btnProducts = findViewById<MaterialButton>(R.id.btnMenuProducts)
+        val btnOrders = findViewById<MaterialButton>(R.id.btnMenuOrders)
+
+        btnUsers.setOnClickListener { startActivity(Intent(this, UsersActivity::class.java)) }
+        btnProducts.setOnClickListener { startActivity(Intent(this, ProductsActivity::class.java)) }
+        btnOrders.setOnClickListener { startActivity(Intent(this, OrdersActivity::class.java)) }
+
+        // Si no tenemos sesión aún, se ajustará en onStart.
+        btnUsers.visibility = if (Session.employee?.role == ROLE_ADMIN) View.VISIBLE else View.GONE
+
         findViewById<MaterialButton>(R.id.btnMenuPayment).setOnClickListener {
             startActivity(Intent(this, PaymentActivity::class.java))
         }
@@ -47,11 +53,27 @@ class MenuActivity : AppCompatActivity() {
         }
 
         findViewById<MaterialButton>(R.id.btnMenuLogout).setOnClickListener {
-            UserStore.clear(this)
+            FirebaseRefs.auth.signOut()
+            Session.clear()
             startActivity(Intent(this, MainActivity::class.java).apply {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             })
             finish()
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val current = FirebaseRefs.auth.currentUser ?: return
+
+        PiRepository.ensureEmployeeAccess(current.uid)
+            .addOnSuccessListener { me ->
+                Session.setEmployee(me)
+                findViewById<MaterialButton>(R.id.btnMenuUsers).visibility =
+                    if (me.role == ROLE_ADMIN) View.VISIBLE else View.GONE
+            }
+            .addOnFailureListener {
+                // ignore
+            }
     }
 }

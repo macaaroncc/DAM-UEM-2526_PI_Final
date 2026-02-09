@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Widget.PI2DAM.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">@dimen/radius_l</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/radius_l</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/radius_l</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/radius_l</item>
+        <item name="boxStrokeColor">@color/brand_orange</item>
+    </style>
+
+    <style name="Widget.PI2DAM.Button.Primary" parent="Widget.Material3.Button">
+        <item name="cornerRadius">@dimen/radius_l</item>
+        <item name="android:minHeight">52dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="backgroundTint">@color/brand_orange</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Widget.PI2DAM.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="cornerRadius">@dimen/radius_l</item>
+        <item name="strokeColor">@color/brand_orange</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/brand_orange</item>
+    </style>
+
+    <style name="Widget.PI2DAM.Button.Primary.Compact" parent="Widget.Material3.Button">
+        <item name="cornerRadius">@dimen/radius_m</item>
+        <item name="android:minHeight">44dp</item>
+        <item name="android:minWidth">44dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="backgroundTint">@color/brand_orange</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Widget.PI2DAM.Button.Text" parent="Widget.Material3.Button.TextButton">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/brand_orange</item>
+    </style>
+
+    <style name="TextAppearance.PI2DAM.ScreenTitle" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.PI2DAM.ToolbarTitle" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.PI2DAM.Link" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textColor">@color/link_blue</item>
+    </style>
+</resources>

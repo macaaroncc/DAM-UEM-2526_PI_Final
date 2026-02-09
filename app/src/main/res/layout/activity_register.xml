@@ -5,14 +5,18 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp"
+    android:background="@color/app_background"
+    android:padding="@dimen/screen_padding"
     tools:context=".RegisterActivity">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnBack"
+        style="@style/Widget.PI2DAM.Button.Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btn_back"
+        app:icon="@android:drawable/ic_media_previous"
+        app:iconTint="@color/brand_orange"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,8 +25,10 @@
         android:layout_width="140dp"
         android:layout_height="140dp"
         android:layout_marginTop="12dp"
+        app:cardBackgroundColor="@color/surface"
         app:cardCornerRadius="70dp"
         app:cardElevation="8dp"
+        app:cardUseCompatPadding="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnBack"
@@ -35,7 +41,8 @@
             android:contentDescription="@string/cd_logo"
             android:padding="24dp"
             android:scaleType="centerInside"
-             />
+            android:src="@drawable/ic_launcher_foreground"
+            android:tint="@color/brand_orange" />
 
     </com.google.android.material.card.MaterialCardView>
 
@@ -54,20 +61,19 @@
 
     <TextView
         android:id="@+id/tvTitle"
+        style="@style/TextAppearance.PI2DAM.ScreenTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/title_register"
-        android:textColor="@android:color/black"
-        android:textSize="28sp"
-        android:textStyle="bold"
+        android:textColor="@color/text_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvBrand" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilUser"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        style="@style/Widget.PI2DAM.TextInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -86,7 +92,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilEmail"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        style="@style/Widget.PI2DAM.TextInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -105,7 +111,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilPassword"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        style="@style/Widget.PI2DAM.TextInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -125,7 +131,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilRepeatPassword"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        style="@style/Widget.PI2DAM.TextInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -145,11 +151,11 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnRegister"
+        style="@style/Widget.PI2DAM.Button.Primary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/btn_register"
-        app:backgroundTint="@color/brand_orange"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

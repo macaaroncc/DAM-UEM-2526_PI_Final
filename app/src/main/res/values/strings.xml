@@ -54,10 +54,38 @@
 
     <string name="title_menu">Menú</string>
     <string name="menu_home">Pagina Principal</string>
+    <string name="menu_users">Usuarios</string>
+    <string name="menu_products">Productos</string>
+    <string name="menu_orders">Pedidos (Proveedores)</string>
     <string name="menu_payment">Pago</string>
     <string name="menu_warehouses_map">Almacenes (Mapa)</string>
     <string name="menu_help">Ayuda</string>
     <string name="menu_logout">Cerrar sesión</string>
+
+    <string name="title_users">Usuarios</string>
+    <string name="title_user_form">Usuario</string>
+    <string name="btn_create_user">Crear usuario</string>
+    <string name="btn_save">Guardar</string>
+    <string name="btn_delete">Borrar</string>
+    <string name="hint_name">Nombre</string>
+    <string name="label_role">Rol</string>
+    <string name="label_active">Activo</string>
+
+    <string name="title_products">Productos</string>
+    <string name="title_product_form">Producto</string>
+    <string name="btn_create_product">Crear producto</string>
+    <string name="hint_product_name">Nombre del producto</string>
+    <string name="hint_sku">SKU</string>
+    <string name="hint_location">Ubicación</string>
+    <string name="hint_stock">Stock</string>
+    <string name="hint_price">Precio</string>
+    <string name="hint_low_stock_threshold">Umbral stock bajo</string>
+
+    <string name="title_orders">Pedidos (Proveedores)</string>
+    <string name="title_create_order">Nuevo pedido</string>
+    <string name="btn_create_order">Crear pedido</string>
+    <string name="btn_submit_order">Hacer pedido</string>
+    <string name="btn_cancel_order">Cancelar pedido</string>
 
     <string name="title_warehouses_map">Almacenes (Mapa)</string>
 

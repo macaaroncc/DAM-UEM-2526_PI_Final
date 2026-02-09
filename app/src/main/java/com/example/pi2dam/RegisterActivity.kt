@@ -1,11 +1,11 @@
 package com.example.pi2dam
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 
@@ -15,11 +15,7 @@ class RegisterActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_register)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        findViewById<View>(R.id.main).applySystemBarsPadding()
 
         findViewById<MaterialButton>(R.id.btnBack).setOnClickListener { finish() }
 
@@ -29,12 +25,12 @@ class RegisterActivity : AppCompatActivity() {
         val etRepeatPassword = findViewById<TextInputEditText>(R.id.etRepeatPassword)
 
         findViewById<MaterialButton>(R.id.btnRegister).setOnClickListener {
-            val user = etUser.text?.toString().orEmpty().trim()
+            val name = etUser.text?.toString().orEmpty().trim()
             val email = etEmail.text?.toString().orEmpty().trim()
             val pass = etPassword.text?.toString().orEmpty()
             val pass2 = etRepeatPassword.text?.toString().orEmpty()
 
-            if (user.isBlank() || email.isBlank() || pass.isBlank() || pass2.isBlank()) {
+            if (name.isBlank() || email.isBlank() || pass.isBlank() || pass2.isBlank()) {
                 Toast.makeText(this, "Completa todos los campos", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
@@ -43,9 +39,34 @@ class RegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            UserStore.register(this, user, email, pass)
-            Toast.makeText(this, "Usuario registrado", Toast.LENGTH_SHORT).show()
-            finish()
+            FirebaseRefs.auth.createUserWithEmailAndPassword(email, pass)
+                .addOnSuccessListener { res ->
+                    val user = res.user
+                    val uid = user?.uid
+                    if (uid.isNullOrBlank()) {
+                        Toast.makeText(this, "Error creando usuario", Toast.LENGTH_SHORT).show()
+                        return@addOnSuccessListener
+                    }
+
+                    // Auto-rol: primero 2 admins, luego hasta 5 workers.
+                    PiRepository.createEmployeeProfileWithLimits(uid, email, name, requestedRole = null)
+                        .addOnSuccessListener {
+                            startActivity(Intent(this, HomeActivity::class.java).apply {
+                                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            })
+                            finish()
+                        }
+                        .addOnFailureListener { e ->
+                            // Si no hay plazas, intentamos borrar el auth recién creado.
+                            user.delete().addOnCompleteListener {
+                                FirebaseRefs.auth.signOut()
+                                Toast.makeText(this, e.message ?: "No hay plazas", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, "No se pudo registrar", Toast.LENGTH_SHORT).show()
+                }
         }
     }
 }

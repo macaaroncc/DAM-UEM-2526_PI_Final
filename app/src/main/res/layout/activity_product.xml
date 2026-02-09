@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/app_background"
     tools:context=".ProductActivity">
 
     <LinearLayout
@@ -12,9 +13,11 @@
         android:layout_width="0dp"
         android:layout_height="64dp"
         android:background="@color/appbar_black"
+        android:elevation="4dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -23,7 +26,8 @@
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:contentDescription="@string/cd_logo"
-           />
+            android:src="@drawable/ic_launcher_foreground"
+            android:tint="@color/brand_orange" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -43,19 +47,25 @@
             android:id="@+id/btnAppbarHelp"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
             android:contentDescription="@string/title_help"
             android:padding="8dp"
             android:src="@android:drawable/ic_menu_help"
-          />
+            android:tint="@android:color/white" />
 
         <ImageView
             android:id="@+id/btnAppbarMenu"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
             android:contentDescription="Menu"
             android:padding="8dp"
             android:src="@android:drawable/ic_menu_more"
-     />
+            android:tint="@android:color/white" />
 
     </LinearLayout>
 
@@ -72,18 +82,22 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnBack"
+            style="@style/Widget.PI2DAM.Button.Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/btn_back" />
+            android:text="@string/btn_back"
+            app:icon="@android:drawable/ic_media_previous"
+            app:iconTint="@color/brand_orange" />
 
         <TextView
+            style="@style/TextAppearance.PI2DAM.ToolbarTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/title_stock_management"
-            android:textStyle="bold" />
+            android:textColor="@color/text_primary" />
 
     </LinearLayout>
 
@@ -168,7 +182,7 @@
                         android:textStyle="bold" />
 
                     <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        style="@style/Widget.PI2DAM.TextInputLayout"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1">
@@ -197,7 +211,7 @@
                         android:textStyle="bold" />
 
                     <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        style="@style/Widget.PI2DAM.TextInputLayout"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1">
@@ -225,7 +239,7 @@
                         android:textStyle="bold" />
 
                     <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        style="@style/Widget.PI2DAM.TextInputLayout"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1">
@@ -278,13 +292,12 @@
                         android:gravity="center"
                         android:orientation="horizontal">
 
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btnMinus"
-                            style="@style/Widget.Material3.Button"
-                            android:layout_width="44dp"
-                            android:layout_height="44dp"
-                            android:text="-"
-                            app:backgroundTint="@color/brand_orange" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnMinus"
+                        style="@style/Widget.PI2DAM.Button.Primary.Compact"
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:text="-" />
 
                         <TextView
                             android:id="@+id/tvQty"
@@ -294,18 +307,17 @@
                             android:text="1"
                             android:textStyle="bold" />
 
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btnPlus"
-                            style="@style/Widget.Material3.Button"
-                            android:layout_width="44dp"
-                            android:layout_height="44dp"
-                            android:text="+"
-                            app:backgroundTint="@color/brand_orange" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnPlus"
+                        style="@style/Widget.PI2DAM.Button.Primary.Compact"
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:text="+" />
 
                     </LinearLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        style="@style/Widget.PI2DAM.TextInputLayout"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -330,11 +342,11 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnSavePart"
+                    style="@style/Widget.PI2DAM.Button.Primary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
-                    android:text="@string/btn_save_part"
-                    app:backgroundTint="@color/brand_orange" />
+                    android:text="@string/btn_save_part" />
 
             </LinearLayout>
 
