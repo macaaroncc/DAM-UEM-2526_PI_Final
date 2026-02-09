@@ -1,0 +1,204 @@
+GUIA FIREBASE (PI2DAM)
+======================
+
+Objetivo
+--------
+Dejar Firebase listo (desde base de datos vacía) para que la app funcione con:
+- 2 admins máximo y 5 workers máximo (usuarios activos)
+- CRUD de usuarios (solo admin)
+- CRUD de productos
+- Pedidos a proveedores: crear pedido seleccionando productos disponibles y cancelar pedido (devuelve stock)
+
+
+1) Servicios que debes activar en Firebase
+----------------------------------------
+1.1 Authentication
+- Firebase Console -> Authentication -> Sign-in method
+- Activar: Email/Password
+
+1.2 Cloud Firestore
+- Firebase Console -> Firestore Database -> Create database
+
+
+2) Conectar la app al proyecto Firebase
+--------------------------------------
+2.1 Crear (o seleccionar) proyecto en Firebase Console.
+2.2 Add app -> Android
+- Android package name (debe ser EXACTO): com.example.pi2dam
+
+2.3 Descargar google-services.json
+- Colocarlo en esta ruta del proyecto:
+  app/google-services.json
+
+2.4 Verificar que el package coincide (opcional)
+- En PowerShell puedes comprobar el package del json:
+  (Get-Content .\app\google-services.json -Raw | ConvertFrom-Json).client[0].client_info.android_client_info.package_name
+
+Si el package no coincide con la app, el login/Firestore fallarán.
+
+
+3) Estructura de Firestore (colecciones + campos)
+------------------------------------------------
+La app usa 3 colecciones:
+
+3.1 users/{uid}
+- Documento cuyo ID = uid de Firebase Auth
+- Campos esperados:
+  uid: string (opcional)
+  email: string
+  name: string
+  role: string ("admin" o "worker")
+  active: boolean (true/false)
+  createdAt: timestamp
+  updatedAt: timestamp
+
+3.2 products/{productId}
+- Campos esperados:
+  name: string
+  sku: string
+  location: string
+  stock: number (int)
+  price: number (double)
+  lowStockThreshold: number (int)
+  updatedAt: timestamp
+
+3.3 orders/{orderId}
+- Campos esperados:
+  status: string ("CREATED" o "CANCELLED")
+  createdByUid: string
+  items: array de maps
+    - productId: string
+    - qty: number (int)
+    - priceSnapshot: number (double)
+  createdAt: timestamp
+  cancelledAt: timestamp o null
+
+Notas importantes:
+- Al crear pedido, la app descuenta stock.
+- Al cancelar pedido, la app devuelve stock.
+
+
+4) Reglas de Firestore (copiar y pegar)
+--------------------------------------
+IMPORTANTE:
+- La app necesita poder leer ciertos datos para validar roles y límites.
+- Estas reglas están pensadas para funcionar y luego se pueden endurecer.
+
+Pega estas reglas en:
+Firebase Console -> Firestore -> Rules
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() { return request.auth != null; }
+    function myUid() { return request.auth.uid; }
+
+    function myProfile() {
+      return get(/databases/$(database)/documents/users/$(myUid()));
+    }
+
+    function isActiveEmployee() {
+      return signedIn() && myProfile().exists() && myProfile().data.active == true;
+    }
+
+    function isAdmin() {
+      return isActiveEmployee() && myProfile().data.role == 'admin';
+    }
+
+    match /users/{uid} {
+      // La app necesita leer perfiles (para validar acceso/rol).
+      allow read: if signedIn();
+
+      // Crear tu propio perfil tras registrarte, o crear perfiles si eres admin.
+      allow create: if (signedIn() && uid == myUid()) || isAdmin();
+
+      // Solo admin puede editar/borrar perfiles.
+      allow update, delete: if isAdmin();
+    }
+
+    match /products/{id} {
+      allow read: if isActiveEmployee();
+      // Si quieres que SOLO admin cree/edite/borrar productos, cambia por: if isAdmin();
+      allow create, update, delete: if isActiveEmployee();
+    }
+
+    match /orders/{id} {
+      allow read: if isActiveEmployee();
+      allow create: if isActiveEmployee();
+
+      // Cancelar: admin o el creador del pedido
+      allow update: if isAdmin() || (isActiveEmployee() && resource.data.createdByUid == myUid());
+
+      // Borrar pedidos (opcional)
+      allow delete: if isAdmin();
+    }
+  }
+}
+
+
+5) Poblar Firebase desde 0 (con la propia app)
+---------------------------------------------
+5.1 Crear admins
+- La app asigna rol automáticamente en el registro:
+  - Los 2 primeros usuarios creados -> admin
+  - A partir del 3º -> worker (hasta 5 workers)
+
+Pasos:
+1) Abre la app -> Registrarme
+2) Registra usuario #1 (email/pass) -> será admin
+3) Registra usuario #2 (email/pass) -> será admin
+
+Comprobación en Firebase Console:
+- Authentication -> Users: deben aparecer los 2 usuarios
+- Firestore -> users: deben existir users/{uid} con role=admin y active=true
+
+5.2 Crear workers y más usuarios (solo admin)
+- Inicia sesión con un admin
+- Menú -> Usuarios -> Crear usuario
+
+NOTA:
+- La creación desde el panel de Usuarios crea:
+  - Cuenta en Authentication
+  - Perfil en Firestore (users/{uid})
+
+5.3 Crear productos
+- Menú -> Productos -> Crear producto
+
+5.4 Crear pedidos a proveedores
+- Menú -> Pedidos (Proveedores) -> Crear pedido
+- Selecciona productos (solo aparecen si stock > 0) y cantidades
+
+5.5 Cancelar pedidos
+- En Pedidos, puedes cancelar si:
+  - eres admin, o
+  - eres el creador del pedido
+
+
+6) Comprobaciones rápidas de que todo está OK
+---------------------------------------------
+A) Registro
+- Registrarte desde la app debe crear:
+  - Authentication user
+  - Firestore users/{uid}
+
+B) Login
+- Login correcto + perfil activo = entra a Home.
+- Si el perfil no existe o active=false = "No autorizado".
+
+C) Productos
+- Crear/editar/borrar productos debe reflejarse en Firestore/products.
+
+D) Pedidos
+- Crear pedido crea doc en orders y descuenta stock.
+- Cancelar pedido marca status=CANCELLED y devuelve stock.
+
+
+7) Aclaraciones sobre borrado de usuarios
+----------------------------------------
+- El botón "Borrar" en la app borra el PERFIL en Firestore (users/{uid}).
+- La cuenta de Authentication NO se borra automáticamente.
+  Si quieres borrarla, hazlo en Firebase Console -> Authentication -> Users.
+
+
+Fin.
