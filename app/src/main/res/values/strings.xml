@@ -51,6 +51,37 @@
     <string name="btn_add_card">Añadir tarjeta</string>
 
     <string name="title_help">Necesitas Ayuda?</string>
+    <string name="help_subtitle">Busca por tema o abre una pregunta para ver la solución.</string>
+    <string name="help_search_hint">Buscar: login, contraseña, productos, pedidos…</string>
+    <string name="help_results">Preguntas mostradas: %1$d</string>
+    <string name="help_quick_actions">Accesos rápidos</string>
+    <string name="help_btn_reset_password">Restablecer contraseña</string>
+    <string name="help_btn_open_products">Ir a productos</string>
+    <string name="help_need_login">Inicia sesión para ver productos</string>
+    <string name="help_opening_products">Abriendo productos…</string>
+    <string name="help_not_authorized">No autorizado</string>
+    <string name="help_btn_open_menu">Abrir menú</string>
+    <string name="help_faq_title">Preguntas frecuentes</string>
+    <string name="help_faq_q_login">No puedo iniciar sesión</string>
+    <string name="help_faq_a_login">Comprueba email/usuario y contraseña. Si aparece “No autorizado”, tu cuenta no tiene permisos de empleado.</string>
+    <string name="help_faq_q_reset">He olvidado la contraseña</string>
+    <string name="help_faq_a_reset">En la pantalla de inicio pulsa “Olvido contraseña”, crea una nueva contraseña y vuelve a iniciar sesión.</string>
+    <string name="help_faq_q_products">¿Cómo creo o edito un producto?</string>
+    <string name="help_faq_a_products">En Productos pulsa “Crear producto” o toca uno existente. Guarda cambios con “Guardar”.</string>
+    <string name="help_faq_q_orders">¿Cómo creo un pedido a proveedor?</string>
+    <string name="help_faq_a_orders">En Pedidos pulsa “Crear pedido”, selecciona productos y confirma con “Hacer pedido”.</string>
+    <string name="help_faq_q_users">No veo la sección de Usuarios</string>
+    <string name="help_faq_a_users">Solo los perfiles con rol admin pueden gestionar usuarios. Si no eres admin, el botón se oculta.</string>
+    <string name="help_faq_q_map">¿Dónde están los almacenes en el mapa?</string>
+    <string name="help_faq_a_map">En “Almacenes (Mapa)” puedes ver ubicaciones. Si no carga, revisa conexión y permisos de Google Play.</string>
+    <string name="help_contact_title">¿Sigues con dudas?</string>
+    <string name="help_contact_desc">Si el problema persiste, contacta con tu administrador o soporte.</string>
+    <string name="help_btn_contact">Contactar soporte</string>
+    <string name="help_support_email">beatrizcanizares7@gmail.com</string>
+    <string name="help_support_subject">Ayuda con PI2DAM</string>
+    <string name="help_support_body">Describe el problema e incluye capturas si puedes.</string>
+    <string name="help_contact_chooser">Contactar soporte</string>
+    <string name="help_no_email_app">No hay app de correo. Email copiado al portapapeles.</string>
 
     <string name="title_menu">Menú</string>
     <string name="menu_home">Pagina Principal</string>
