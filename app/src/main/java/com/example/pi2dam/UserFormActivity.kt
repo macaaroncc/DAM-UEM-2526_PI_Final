@@ -36,7 +36,7 @@ class UserFormActivity : AppCompatActivity() {
         val spRole = findViewById<Spinner>(R.id.spRole)
         val swActive = findViewById<SwitchMaterial>(R.id.swActive)
 
-        findViewById<MaterialButton>(R.id.btnBack).setOnClickListener { finish() }
+        AppMenu.bind(this)
 
         spRole.adapter = ArrayAdapter(
             this,

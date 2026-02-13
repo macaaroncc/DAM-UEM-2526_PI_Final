@@ -27,14 +27,10 @@ class ProductActivity : AppCompatActivity() {
             findViewById<TextInputEditText>(R.id.etProductName).setText(productName)
         }
 
-        findViewById<View>(R.id.btnBack).setOnClickListener { finish() }
+        AppMenu.bind(this)
 
         findViewById<ImageView>(R.id.btnAppbarHelp).setOnClickListener {
             startActivity(Intent(this, HelpActivity::class.java))
-        }
-
-        findViewById<ImageView>(R.id.btnAppbarMenu).setOnClickListener {
-            startActivity(Intent(this, MenuActivity::class.java))
         }
 
         val tvQty = findViewById<TextView>(R.id.tvQty)

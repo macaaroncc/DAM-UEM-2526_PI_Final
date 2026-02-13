@@ -42,6 +42,18 @@
             android:layout_height="0dp"
             android:layout_weight="1" />
 
+        <ImageView
+            android:id="@+id/btnAppbarMenu"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="Menu"
+            android:padding="8dp"
+            android:src="@drawable/ic_hamburger_menu"
+            app:tint="@android:color/white" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -55,21 +67,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appbar">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnBack"
-            style="@style/Widget.PI2DAM.Button.Text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_back"
-            app:icon="@android:drawable/ic_media_previous"
-            app:iconTint="@color/brand_orange" />
-
         <TextView
             style="@style/TextAppearance.PI2DAM.ToolbarTitle"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_weight="1"
             android:gravity="center"
             android:text="@string/title_user_form"
             android:textColor="@color/text_primary" />

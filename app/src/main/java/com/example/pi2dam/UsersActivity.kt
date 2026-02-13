@@ -30,7 +30,7 @@ class UsersActivity : AppCompatActivity() {
 
         findViewById<View>(R.id.main).applySystemBarsPadding()
 
-        findViewById<MaterialButton>(R.id.btnBack).setOnClickListener { finish() }
+        AppMenu.bind(this)
 
         findViewById<MaterialButton>(R.id.btnCreateUser).setOnClickListener {
             startActivity(Intent(this, UserFormActivity::class.java))

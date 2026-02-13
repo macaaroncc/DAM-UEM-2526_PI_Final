@@ -17,14 +17,10 @@ class PaymentActivity : AppCompatActivity() {
 
         findViewById<View>(R.id.main).applySystemBarsPadding()
 
-        findViewById<View>(R.id.btnBack).setOnClickListener { finish() }
+        AppMenu.bind(this)
 
         findViewById<ImageView>(R.id.btnAppbarHelp).setOnClickListener {
             startActivity(Intent(this, HelpActivity::class.java))
-        }
-
-        findViewById<ImageView>(R.id.btnAppbarMenu).setOnClickListener {
-            startActivity(Intent(this, MenuActivity::class.java))
         }
 
         findViewById<MaterialButton>(R.id.btnAddCard).setOnClickListener {

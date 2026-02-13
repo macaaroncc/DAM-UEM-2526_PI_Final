@@ -18,18 +18,10 @@ class HomeActivity : AppCompatActivity() {
 
         findViewById<View>(R.id.main).applySystemBarsPadding()
 
-        findViewById<View>(R.id.btnBack).setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java).apply {
-                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            })
-            finish()
-        }
+        AppMenu.bind(this)
 
         findViewById<View>(R.id.btnHelp).setOnClickListener {
             startActivity(Intent(this, HelpActivity::class.java))
-        }
-        findViewById<View>(R.id.btnMenu).setOnClickListener {
-            startActivity(Intent(this, MenuActivity::class.java))
         }
 
         findViewById<TextInputLayout>(R.id.tilSearchHome).setEndIconOnClickListener {

@@ -18,6 +18,12 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<View>(R.id.main).applySystemBarsPadding()
 
+        // Siempre empezar en Login (sin auto-sesión)
+        FirebaseRefs.auth.signOut()
+        Session.clear()
+
+        AppMenu.bind(this)
+
         val etUser = findViewById<TextInputEditText>(R.id.etUser)
         val etPassword = findViewById<TextInputEditText>(R.id.etPassword)
 
@@ -28,17 +34,6 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
-        FirebaseRefs.auth.currentUser?.let { current ->
-            PiRepository.ensureEmployeeAccess(current.uid)
-                .addOnSuccessListener {
-                    Session.setEmployee(it)
-                    goHome()
-                }
-                .addOnFailureListener {
-                    FirebaseRefs.auth.signOut()
-                    Session.clear()
-                }
-        }
 
         findViewById<MaterialButton>(R.id.btnLogin).setOnClickListener {
             val email = etUser.text?.toString().orEmpty().trim()

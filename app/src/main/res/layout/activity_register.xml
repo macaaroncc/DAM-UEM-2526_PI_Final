@@ -9,16 +9,19 @@
     android:padding="@dimen/screen_padding"
     tools:context=".RegisterActivity">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnBack"
-        style="@style/Widget.PI2DAM.Button.Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_back"
-        app:icon="@android:drawable/ic_media_previous"
-        app:iconTint="@color/brand_orange"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/btnMenu"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:contentDescription="Menu"
+        android:padding="8dp"
+        android:src="@drawable/ic_hamburger_menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/brand_orange" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardLogo"
@@ -31,7 +34,7 @@
         app:cardUseCompatPadding="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnBack"
+        app:layout_constraintTop_toTopOf="parent"
         app:strokeColor="@color/logo_stroke"
         app:strokeWidth="2dp">
 
@@ -42,7 +45,7 @@
             android:padding="24dp"
             android:scaleType="centerInside"
             android:src="@drawable/ic_launcher_foreground"
-            android:tint="@color/brand_orange" />
+            app:tint="@color/brand_orange" />
 
     </com.google.android.material.card.MaterialCardView>
 

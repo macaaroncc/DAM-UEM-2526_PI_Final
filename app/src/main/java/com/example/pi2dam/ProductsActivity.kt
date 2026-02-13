@@ -29,7 +29,8 @@ class ProductsActivity : AppCompatActivity() {
 
         findViewById<View>(R.id.main).applySystemBarsPadding()
 
-        findViewById<MaterialButton>(R.id.btnBack).setOnClickListener { finish() }
+        AppMenu.bind(this)
+
         findViewById<MaterialButton>(R.id.btnCreateProduct).setOnClickListener {
             startActivity(Intent(this, ProductFormActivity::class.java))
         }
