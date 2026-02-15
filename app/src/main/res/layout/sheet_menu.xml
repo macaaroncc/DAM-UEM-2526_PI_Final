@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/surface"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <View
+        android:layout_width="44dp"
+        android:layout_height="5dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/divider" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/title_menu"
+        android:textColor="@color/text_primary"
+        android:textStyle="bold" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSheetHome"
+        style="@style/Widget.PI2DAM.Button.Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/menu_home"
+        app:icon="@android:drawable/ic_menu_view"
+        app:iconTint="@color/brand_orange" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSheetUsers"
+        style="@style/Widget.PI2DAM.Button.Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_users"
+        app:icon="@android:drawable/ic_menu_manage"
+        app:iconTint="@color/brand_orange" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSheetProducts"
+        style="@style/Widget.PI2DAM.Button.Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_products"
+        app:icon="@android:drawable/ic_menu_agenda"
+        app:iconTint="@color/brand_orange" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSheetOrders"
+        style="@style/Widget.PI2DAM.Button.Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_orders"
+        app:icon="@android:drawable/ic_menu_sort_by_size"
+        app:iconTint="@color/brand_orange" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSheetPayment"
+        style="@style/Widget.PI2DAM.Button.Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_payment"
+        app:icon="@android:drawable/ic_menu_send"
+        app:iconTint="@color/brand_orange" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSheetWarehouses"
+        style="@style/Widget.PI2DAM.Button.Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_warehouses_map"
+        app:icon="@android:drawable/ic_dialog_map"
+        app:iconTint="@color/brand_orange" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSheetHelp"
+        style="@style/Widget.PI2DAM.Button.Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_help"
+        app:icon="@android:drawable/ic_menu_help"
+        app:iconTint="@color/brand_orange" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/divider" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSheetLogout"
+        style="@style/Widget.PI2DAM.Button.Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_logout"
+        app:icon="@android:drawable/ic_lock_power_off"
+        app:iconTint="@color/brand_orange" />
+
+</LinearLayout>
