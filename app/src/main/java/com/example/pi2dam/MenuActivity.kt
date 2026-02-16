@@ -16,11 +16,11 @@ class MenuActivity : AppCompatActivity() {
 
         findViewById<View>(R.id.main).applySystemBarsPadding()
 
-        findViewById<View>(R.id.btnBack).setOnClickListener { finish() }
+        AppMenu.bind(this)
+
         findViewById<View>(R.id.btnHelp).setOnClickListener {
             startActivity(Intent(this, HelpActivity::class.java))
         }
-        findViewById<View>(R.id.btnAppbarMenu).setOnClickListener { finish() }
 
         findViewById<MaterialButton>(R.id.btnMenuHome).setOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java).apply {

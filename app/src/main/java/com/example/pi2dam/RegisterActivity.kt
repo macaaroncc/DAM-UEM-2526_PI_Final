@@ -17,7 +17,7 @@ class RegisterActivity : AppCompatActivity() {
 
         findViewById<View>(R.id.main).applySystemBarsPadding()
 
-        findViewById<MaterialButton>(R.id.btnBack).setOnClickListener { finish() }
+        AppMenu.bind(this)
 
         val etUser = findViewById<TextInputEditText>(R.id.etUser)
         val etEmail = findViewById<TextInputEditText>(R.id.etEmail)

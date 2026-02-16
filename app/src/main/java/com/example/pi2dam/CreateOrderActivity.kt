@@ -23,7 +23,7 @@ class CreateOrderActivity : AppCompatActivity() {
 
         findViewById<View>(R.id.main).applySystemBarsPadding()
 
-        findViewById<MaterialButton>(R.id.btnBack).setOnClickListener { finish() }
+        AppMenu.bind(this)
 
         findViewById<RecyclerView>(R.id.rvPickProducts).apply {
             layoutManager = LinearLayoutManager(this@CreateOrderActivity)

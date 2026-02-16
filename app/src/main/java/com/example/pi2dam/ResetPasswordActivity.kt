@@ -16,7 +16,7 @@ class ResetPasswordActivity : AppCompatActivity() {
 
         findViewById<View>(R.id.main).applySystemBarsPadding()
 
-        findViewById<MaterialButton>(R.id.btnBack).setOnClickListener { finish() }
+        AppMenu.bind(this)
 
         val etNew = findViewById<TextInputEditText>(R.id.etNewPassword)
         val etRepeat = findViewById<TextInputEditText>(R.id.etRepeatNewPassword)

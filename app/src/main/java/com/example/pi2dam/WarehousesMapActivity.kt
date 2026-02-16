@@ -24,12 +24,10 @@ class WarehousesMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
         findViewById<View>(R.id.main).applySystemBarsPadding()
 
-        findViewById<View>(R.id.btnBack).setOnClickListener { finish() }
+        AppMenu.bind(this)
+
         findViewById<View>(R.id.btnAppbarHelp).setOnClickListener {
             startActivity(Intent(this, HelpActivity::class.java))
-        }
-        findViewById<View>(R.id.btnAppbarMenu).setOnClickListener {
-            startActivity(Intent(this, MenuActivity::class.java))
         }
 
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as? SupportMapFragment

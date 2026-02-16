@@ -34,7 +34,8 @@ class OrdersActivity : AppCompatActivity() {
 
         findViewById<View>(R.id.main).applySystemBarsPadding()
 
-        findViewById<MaterialButton>(R.id.btnBack).setOnClickListener { finish() }
+        AppMenu.bind(this)
+
         findViewById<MaterialButton>(R.id.btnCreateOrder).setOnClickListener {
             startActivity(Intent(this, CreateOrderActivity::class.java))
         }

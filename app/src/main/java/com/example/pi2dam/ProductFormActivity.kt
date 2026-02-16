@@ -33,7 +33,7 @@ class ProductFormActivity : AppCompatActivity() {
         val isEdit = !editingId.isNullOrBlank()
         findViewById<MaterialButton>(R.id.btnDelete).visibility = if (isEdit) View.VISIBLE else View.GONE
 
-        findViewById<MaterialButton>(R.id.btnBack).setOnClickListener { finish() }
+        AppMenu.bind(this)
 
         if (isEdit) {
             val id = editingId!!

@@ -31,14 +31,10 @@ class HelpActivity : AppCompatActivity() {
 
         findViewById<View>(R.id.main).applySystemBarsPadding()
 
-        findViewById<View>(R.id.btnBack).setOnClickListener { finish() }
+        AppMenu.bind(this)
 
         findViewById<ImageView>(R.id.btnAppbarHelp).setOnClickListener {
             Toast.makeText(this, "Ya estás en Ayuda", Toast.LENGTH_SHORT).show()
-        }
-
-        findViewById<ImageView>(R.id.btnAppbarMenu).setOnClickListener {
-            startActivity(Intent(this, MenuActivity::class.java))
         }
 
         findViewById<MaterialButton>(R.id.btnHelpResetPassword).setOnClickListener {
@@ -64,7 +60,7 @@ class HelpActivity : AppCompatActivity() {
         }
 
         findViewById<MaterialButton>(R.id.btnHelpOpenMenu).setOnClickListener {
-            startActivity(Intent(this, MenuActivity::class.java))
+            AppMenuSheet.show(supportFragmentManager)
         }
 
         findViewById<MaterialButton>(R.id.btnHelpContact).setOnClickListener {
