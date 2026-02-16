@@ -204,31 +204,38 @@ object PiRepository {
         val orderRef = db.collection(FirebaseRefs.COL_ORDERS).document()
 
         return db.runTransaction { tx ->
-            // 1) Check stock + decrement
-            items.forEach { it ->
-                if (it.productId.isBlank() || it.qty <= 0) {
+            // 1) Validar items
+            items.forEach { item ->
+                if (item.productId.isBlank() || item.qty <= 0) {
                     throw FirebaseFirestoreException("Item inválido", FirebaseFirestoreException.Code.INVALID_ARGUMENT)
                 }
+            }
 
-                val prodRef = db.collection(FirebaseRefs.COL_PRODUCTS).document(it.productId)
-                val snap = tx.get(prodRef)
-                val currentStock = snap.getLong("stock") ?: 0L
-                if (currentStock < it.qty) {
+            // 2) TODAS las lecturas primero
+            val productRefs = items.map { db.collection(FirebaseRefs.COL_PRODUCTS).document(it.productId) }
+            val snapshots = productRefs.map { tx.get(it) }
+
+            // 3) Verificar stock y calcular nuevos valores
+            val stockUpdates = items.mapIndexed { index, item ->
+                val currentStock = snapshots[index].getLong("stock") ?: 0L
+                if (currentStock < item.qty) {
                     throw FirebaseFirestoreException(
                         "Stock insuficiente",
                         FirebaseFirestoreException.Code.FAILED_PRECONDITION
                     )
                 }
-                tx.update(
-                    prodRef,
-                    mapOf(
-                        "stock" to (currentStock - it.qty),
-                        "updatedAt" to FieldValue.serverTimestamp()
-                    )
-                )
+                productRefs[index] to (currentStock - item.qty)
             }
 
-            // 2) Create order
+            // 4) TODAS las escrituras después
+            stockUpdates.forEach { (prodRef, newStock) ->
+                tx.update(prodRef, mapOf(
+                    "stock" to newStock,
+                    "updatedAt" to FieldValue.serverTimestamp()
+                ))
+            }
+
+            // 5) Crear order
             val orderData = hashMapOf(
                 "status" to OrderStatus.CREATED,
                 "createdByUid" to createdByUid,
