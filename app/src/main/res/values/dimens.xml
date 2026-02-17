@@ -4,9 +4,11 @@
     <dimen name="space_s">8dp</dimen>
     <dimen name="space_m">16dp</dimen>
     <dimen name="space_l">24dp</dimen>
+    <dimen name="space_xl">32dp</dimen>
 
     <dimen name="screen_padding">24dp</dimen>
 
     <dimen name="radius_m">12dp</dimen>
     <dimen name="radius_l">16dp</dimen>
+    <dimen name="radius_xl">22dp</dimen>
 </resources>

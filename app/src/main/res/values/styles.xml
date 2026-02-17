@@ -52,4 +52,54 @@
     <style name="TextAppearance.PI2DAM.Link" parent="TextAppearance.Material3.BodyMedium">
         <item name="android:textColor">@color/link_blue</item>
     </style>
+
+    <style name="TextAppearance.PI2DAM.MenuTitle" parent="TextAppearance.Material3.HeadlineLarge">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <style name="TextAppearance.PI2DAM.MenuSubtitle" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+
+    <style name="TextAppearance.PI2DAM.MenuSection" parent="TextAppearance.Material3.TitleSmall">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:letterSpacing">0.02</item>
+    </style>
+
+    <style name="TextAppearance.PI2DAM.MenuItemTitle" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <style name="TextAppearance.PI2DAM.MenuItemSubtitle" parent="TextAppearance.Material3.BodySmall">
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+
+    <style name="Widget.PI2DAM.MenuCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">@dimen/radius_xl</item>
+        <item name="cardElevation">2dp</item>
+        <item name="cardUseCompatPadding">true</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/menu_card_stroke</item>
+        <item name="cardBackgroundColor">@color/menu_card</item>
+    </style>
+
+    <style name="Widget.PI2DAM.MenuChip" parent="Widget.Material3.Chip.Assist">
+        <item name="chipCornerRadius">@dimen/radius_l</item>
+        <item name="chipBackgroundColor">@color/menu_chip_bg</item>
+        <item name="chipStrokeColor">@color/menu_card_stroke</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <style name="Widget.PI2DAM.TextInputLayout.MenuSearch" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">@dimen/radius_l</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/radius_l</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/radius_l</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/radius_l</item>
+        <item name="boxStrokeColor">@color/menu_card_stroke</item>
+        <item name="boxBackgroundColor">@color/menu_card</item>
+    </style>
 </resources>

@@ -19,4 +19,14 @@
     <!-- Existing colors used in layouts -->
     <color name="logo_stroke">#DDDDDD</color>
     <color name="appbar_black">#0A0A0A</color>
+
+    <!-- Menu (Apple-like) -->
+    <color name="menu_background">#F5F5F7</color>
+    <color name="menu_card">#FFFFFFFF</color>
+    <color name="menu_card_stroke">#E5E7EB</color>
+    <color name="menu_icon_bg">#F2F4F7</color>
+    <color name="menu_chevron">#C7C7CC</color>
+    <color name="menu_chip_bg">#FFFFFF</color>
+    <color name="danger">#D92D20</color>
+    <color name="danger_bg">#FEE4E2</color>
 </resources>

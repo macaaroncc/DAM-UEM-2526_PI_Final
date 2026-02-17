@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/surface"
+    android:background="@color/menu_background"
     android:orientation="vertical"
     android:padding="16dp">
 
@@ -13,92 +13,453 @@
         android:layout_gravity="center_horizontal"
         android:background="@color/divider" />
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="@string/title_menu"
-        android:textColor="@color/text_primary"
-        android:textStyle="bold" />
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnSheetHome"
-        style="@style/Widget.PI2DAM.Button.Text"
+        <TextView
+            style="@style/TextAppearance.PI2DAM.MenuSection"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/title_menu" />
+
+        <ImageButton
+            android:id="@+id/btnSheetHelpIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/title_help"
+            android:padding="8dp"
+            android:src="@android:drawable/ic_menu_help"
+            android:tint="@color/brand_orange" />
+
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/menu_home"
-        app:icon="@android:drawable/ic_menu_view"
-        app:iconTint="@color/brand_orange" />
+        android:fillViewport="true"
+        android:overScrollMode="ifContentScrolls">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnSheetUsers"
-        style="@style/Widget.PI2DAM.Button.Text"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextAppearance.PI2DAM.MenuSubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/menu_quick_actions" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupSheetQuick"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:chipSpacingHorizontal="8dp"
+                app:chipSpacingVertical="8dp"
+                app:singleLine="false">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipSheetCreateOrder"
+                    style="@style/Widget.PI2DAM.MenuChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/menu_quick_order"
+                    app:chipIcon="@android:drawable/ic_input_add"
+                    app:chipIconTint="@color/brand_orange"
+                    app:chipIconVisible="true" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipSheetCreateProduct"
+                    style="@style/Widget.PI2DAM.MenuChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/menu_quick_product"
+                    app:chipIcon="@android:drawable/ic_input_add"
+                    app:chipIconTint="@color/brand_orange"
+                    app:chipIconVisible="true" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipSheetResetPassword"
+                    style="@style/Widget.PI2DAM.MenuChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/menu_quick_reset_password"
+                    app:chipIcon="@drawable/ic_lock"
+                    app:chipIconTint="@color/brand_orange"
+                    app:chipIconVisible="true" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+            <TextView
+                style="@style/TextAppearance.PI2DAM.MenuSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/menu_sections" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardSheetHome"
+        style="@style/Widget.PI2DAM.MenuCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/menu_users"
-        app:icon="@android:drawable/ic_menu_manage"
-        app:iconTint="@color/brand_orange" />
+        android:layout_marginTop="12dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnSheetProducts"
-        style="@style/Widget.PI2DAM.Button.Text"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="14dp">
+
+            <FrameLayout
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_menu_icon">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/menu_home"
+                    android:src="@android:drawable/ic_menu_view"
+                    android:tint="@color/brand_orange" />
+
+            </FrameLayout>
+
+            <TextView
+                style="@style/TextAppearance.PI2DAM.MenuItemTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:text="@string/menu_home" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_chevron_right" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardSheetUsers"
+        style="@style/Widget.PI2DAM.MenuCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/menu_products"
-        app:icon="@android:drawable/ic_menu_agenda"
-        app:iconTint="@color/brand_orange" />
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnSheetOrders"
-        style="@style/Widget.PI2DAM.Button.Text"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="14dp">
+
+            <FrameLayout
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_menu_icon">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/menu_users"
+                    android:src="@android:drawable/ic_menu_manage"
+                    android:tint="@color/brand_orange" />
+
+            </FrameLayout>
+
+            <TextView
+                style="@style/TextAppearance.PI2DAM.MenuItemTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:text="@string/menu_users" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_chevron_right" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardSheetProducts"
+        style="@style/Widget.PI2DAM.MenuCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/menu_orders"
-        app:icon="@android:drawable/ic_menu_sort_by_size"
-        app:iconTint="@color/brand_orange" />
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnSheetPayment"
-        style="@style/Widget.PI2DAM.Button.Text"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="14dp">
+
+            <FrameLayout
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_menu_icon">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/menu_products"
+                    android:src="@android:drawable/ic_menu_agenda"
+                    android:tint="@color/brand_orange" />
+
+            </FrameLayout>
+
+            <TextView
+                style="@style/TextAppearance.PI2DAM.MenuItemTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:text="@string/menu_products" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_chevron_right" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardSheetOrders"
+        style="@style/Widget.PI2DAM.MenuCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/menu_payment"
-        app:icon="@android:drawable/ic_menu_send"
-        app:iconTint="@color/brand_orange" />
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnSheetWarehouses"
-        style="@style/Widget.PI2DAM.Button.Text"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="14dp">
+
+            <FrameLayout
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_menu_icon">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/menu_orders"
+                    android:src="@android:drawable/ic_menu_sort_by_size"
+                    android:tint="@color/brand_orange" />
+
+            </FrameLayout>
+
+            <TextView
+                style="@style/TextAppearance.PI2DAM.MenuItemTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:text="@string/menu_orders" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_chevron_right" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardSheetPayment"
+        style="@style/Widget.PI2DAM.MenuCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/menu_warehouses_map"
-        app:icon="@android:drawable/ic_dialog_map"
-        app:iconTint="@color/brand_orange" />
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnSheetHelp"
-        style="@style/Widget.PI2DAM.Button.Text"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="14dp">
+
+            <FrameLayout
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_menu_icon">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/menu_payment"
+                    android:src="@android:drawable/ic_menu_send"
+                    android:tint="@color/brand_orange" />
+
+            </FrameLayout>
+
+            <TextView
+                style="@style/TextAppearance.PI2DAM.MenuItemTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:text="@string/menu_payment" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_chevron_right" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardSheetWarehouses"
+        style="@style/Widget.PI2DAM.MenuCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/menu_help"
-        app:icon="@android:drawable/ic_menu_help"
-        app:iconTint="@color/brand_orange" />
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/divider" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="14dp">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnSheetLogout"
-        style="@style/Widget.PI2DAM.Button.Text"
+            <FrameLayout
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_menu_icon">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/menu_warehouses_map"
+                    android:src="@android:drawable/ic_dialog_map"
+                    android:tint="@color/brand_orange" />
+
+            </FrameLayout>
+
+            <TextView
+                style="@style/TextAppearance.PI2DAM.MenuItemTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:text="@string/menu_warehouses_map" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_chevron_right" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardSheetHelp"
+        style="@style/Widget.PI2DAM.MenuCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/menu_logout"
-        app:icon="@android:drawable/ic_lock_power_off"
-        app:iconTint="@color/brand_orange" />
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="14dp">
+
+            <FrameLayout
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_menu_icon">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/menu_help"
+                    android:src="@android:drawable/ic_menu_help"
+                    android:tint="@color/brand_orange" />
+
+            </FrameLayout>
+
+            <TextView
+                style="@style/TextAppearance.PI2DAM.MenuItemTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:text="@string/menu_help" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_chevron_right" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                style="@style/TextAppearance.PI2DAM.MenuSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/menu_account" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSheetLogout"
+                style="@style/Widget.PI2DAM.Button.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/danger"
+                android:text="@string/menu_logout"
+                app:icon="@android:drawable/ic_lock_power_off"
+                app:iconTint="@color/white" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>
