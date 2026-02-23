@@ -105,6 +105,7 @@
     <string name="title_products">Productos</string>
     <string name="title_product_form">Producto</string>
     <string name="btn_create_product">Crear producto</string>
+    <string name="btn_export_stock_pdf">Exportar stock (PDF)</string>
     <string name="hint_product_name">Nombre del producto</string>
     <string name="hint_sku">SKU</string>
     <string name="hint_location">Ubicación</string>
@@ -115,6 +116,7 @@
     <string name="title_orders">Pedidos (Proveedores)</string>
     <string name="title_create_order">Nuevo pedido</string>
     <string name="btn_create_order">Crear pedido</string>
+    <string name="btn_export_orders_pdf">Exportar pedidos del mes (PDF)</string>
     <string name="btn_submit_order">Hacer pedido</string>
     <string name="btn_cancel_order">Cancelar pedido</string>
 
