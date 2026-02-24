@@ -29,6 +29,8 @@
         <activity android:name=".UserFormActivity" />
         <activity android:name=".ProductsActivity" />
         <activity android:name=".ProductFormActivity" />
+        <activity android:name=".DashboardActivity" />
+        <activity android:name=".ChatActivity" />
         <activity android:name=".OrdersActivity" />
         <activity android:name=".CreateOrderActivity" />
 

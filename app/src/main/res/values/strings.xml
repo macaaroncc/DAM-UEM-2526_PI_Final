@@ -84,40 +84,25 @@
     <string name="help_no_email_app">No hay app de correo. Email copiado al portapapeles.</string>
 
     <string name="title_menu">Menú</string>
-    <string name="menu_subtitle">Todo lo que necesitas, a un toque.</string>
-    <string name="menu_search_hint">Buscar en el menú</string>
-    <string name="menu_quick_actions">Accesos rápidos</string>
-    <string name="menu_sections">Secciones</string>
-    <string name="menu_account">Cuenta</string>
-    <string name="menu_empty">No hay resultados</string>
-    <string name="menu_need_login">Inicia sesión para continuar</string>
-    <string name="menu_role_admin">Administrador</string>
-    <string name="menu_role_worker">Empleado</string>
-    <string name="menu_guest">Invitado</string>
-    <string name="menu_guest_subtitle">Inicia sesión para ver todo</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="dashboard_month_summary">Resumen del mes</string>
+    <string name="dashboard_total_investment">Inversión total</string>
+    <string name="dashboard_total_units">Unidades</string>
+    <string name="dashboard_top_products">Top productos (por unidades)</string>
+    <string name="dashboard_empty">Sin datos para este mes</string>
+    <string name="dashboard_orders_count">Pedidos: %1$d (Cancelados: %2$d)</string>
+    <string name="title_chat">Chat de Stock</string>
+    <string name="chat_hint">Mensaje…</string>
     <string name="menu_home">Pagina Principal</string>
     <string name="menu_users">Usuarios</string>
     <string name="menu_products">Productos</string>
+    <string name="menu_dashboard">Dashboard</string>
+    <string name="menu_chat">Chat (stock)</string>
     <string name="menu_orders">Pedidos (Proveedores)</string>
     <string name="menu_payment">Pago</string>
     <string name="menu_warehouses_map">Almacenes (Mapa)</string>
     <string name="menu_help">Ayuda</string>
     <string name="menu_logout">Cerrar sesión</string>
-
-    <string name="menu_subtitle_home">Vista general e inventario</string>
-    <string name="menu_subtitle_users">Gestiona equipo y permisos</string>
-    <string name="menu_subtitle_products">Productos, stock y precios</string>
-    <string name="menu_subtitle_orders">Pedidos a proveedores</string>
-    <string name="menu_subtitle_payment">Tarjetas y pagos</string>
-    <string name="menu_subtitle_warehouses">Ubicaciones y rutas</string>
-    <string name="menu_subtitle_help">Soporte y preguntas frecuentes</string>
-    <string name="menu_subtitle_logout">Cerrar sesión de forma segura</string>
-
-    <string name="menu_quick_order">Nuevo pedido</string>
-    <string name="menu_quick_product">Crear producto</string>
-    <string name="menu_quick_user">Nuevo usuario</string>
-    <string name="menu_quick_warehouses">Mapa almacenes</string>
-    <string name="menu_quick_reset_password">Restablecer contraseña</string>
 
     <string name="title_users">Usuarios</string>
     <string name="title_user_form">Usuario</string>
