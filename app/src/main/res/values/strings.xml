@@ -25,6 +25,17 @@
     <string name="btn_back">Volver</string>
 
     <string name="title_home">Pagina Principal</string>
+
+    <string name="home_inventory_summary">Resumen del inventario</string>
+    <string name="home_stat_products">Productos</string>
+    <string name="home_stat_units">Unidades</string>
+    <string name="home_stat_low_stock">Stock bajo</string>
+    <string name="home_stat_inventory_value">Valor inventario</string>
+    <string name="home_role_admin">Admin</string>
+    <string name="home_role_worker">Operario</string>
+    <string name="home_greeting">Hola, %1$s</string>
+    <string name="home_greeting_fallback">Hola</string>
+
     <string name="hint_search">Buscar</string>
     <string name="filter_recent">Reciente</string>
     <string name="filter_low_stock">Stock Bajo</string>
