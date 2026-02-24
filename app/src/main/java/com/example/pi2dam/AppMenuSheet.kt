@@ -41,6 +41,8 @@ class AppMenuSheet : BottomSheetDialogFragment() {
 
         btnUsers.setOnClickListener { go(UsersActivity::class.java) }
         view.findViewById<MaterialButton>(R.id.btnSheetProducts).setOnClickListener { go(ProductsActivity::class.java) }
+        view.findViewById<MaterialButton>(R.id.btnSheetDashboard).setOnClickListener { go(DashboardActivity::class.java) }
+        view.findViewById<MaterialButton>(R.id.btnSheetChat).setOnClickListener { go(ChatActivity::class.java) }
         view.findViewById<MaterialButton>(R.id.btnSheetOrders).setOnClickListener { go(OrdersActivity::class.java) }
         view.findViewById<MaterialButton>(R.id.btnSheetPayment).setOnClickListener { go(PaymentActivity::class.java) }
         view.findViewById<MaterialButton>(R.id.btnSheetWarehouses).setOnClickListener { go(WarehousesMapActivity::class.java) }
@@ -59,6 +61,8 @@ class AppMenuSheet : BottomSheetDialogFragment() {
         if (FirebaseRefs.auth.currentUser == null) {
             btnUsers.visibility = View.GONE
             view.findViewById<MaterialButton>(R.id.btnSheetProducts).isEnabled = false
+            view.findViewById<MaterialButton>(R.id.btnSheetDashboard).isEnabled = false
+            view.findViewById<MaterialButton>(R.id.btnSheetChat).isEnabled = false
             view.findViewById<MaterialButton>(R.id.btnSheetOrders).isEnabled = false
             view.findViewById<MaterialButton>(R.id.btnSheetPayment).isEnabled = false
             view.findViewById<MaterialButton>(R.id.btnSheetWarehouses).isEnabled = false

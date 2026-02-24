@@ -10,4 +10,8 @@ object FirebaseRefs {
     const val COL_USERS = "users"
     const val COL_PRODUCTS = "products"
     const val COL_ORDERS = "orders"
+
+    const val COL_CHATS = "chats"
+    const val SUB_MESSAGES = "messages"
+    const val CHAT_STOCK = "stock"
 }

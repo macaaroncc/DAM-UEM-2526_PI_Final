@@ -31,10 +31,14 @@ class MenuActivity : AppCompatActivity() {
 
         val btnUsers = findViewById<MaterialButton>(R.id.btnMenuUsers)
         val btnProducts = findViewById<MaterialButton>(R.id.btnMenuProducts)
+        val btnDashboard = findViewById<MaterialButton>(R.id.btnMenuDashboard)
+        val btnChat = findViewById<MaterialButton>(R.id.btnMenuChat)
         val btnOrders = findViewById<MaterialButton>(R.id.btnMenuOrders)
 
         btnUsers.setOnClickListener { startActivity(Intent(this, UsersActivity::class.java)) }
         btnProducts.setOnClickListener { startActivity(Intent(this, ProductsActivity::class.java)) }
+        btnDashboard.setOnClickListener { startActivity(Intent(this, DashboardActivity::class.java)) }
+        btnChat.setOnClickListener { startActivity(Intent(this, ChatActivity::class.java)) }
         btnOrders.setOnClickListener { startActivity(Intent(this, OrdersActivity::class.java)) }
 
         // Si no tenemos sesión aún, se ajustará en onStart.

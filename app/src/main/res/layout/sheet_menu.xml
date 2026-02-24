@@ -50,6 +50,24 @@
         app:iconTint="@color/brand_orange" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSheetDashboard"
+        style="@style/Widget.PI2DAM.Button.Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_dashboard"
+        app:icon="@android:drawable/ic_menu_sort_alphabetically"
+        app:iconTint="@color/brand_orange" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSheetChat"
+        style="@style/Widget.PI2DAM.Button.Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_chat"
+        app:icon="@android:drawable/ic_menu_send"
+        app:iconTint="@color/brand_orange" />
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSheetOrders"
         style="@style/Widget.PI2DAM.Button.Text"
         android:layout_width="match_parent"
