@@ -27,7 +27,7 @@
             android:layout_height="28dp"
             android:contentDescription="@string/cd_logo"
             android:src="@drawable/ic_launcher_foreground"
-             />
+            app:tint="@color/brand_orange" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -53,7 +53,7 @@
             android:contentDescription="@string/title_help"
             android:padding="8dp"
             android:src="@android:drawable/ic_menu_help"
-             />
+            app:tint="@android:color/white" />
 
         <ImageView
             android:id="@+id/btnAppbarMenu"
@@ -65,7 +65,7 @@
             android:contentDescription="Menu"
             android:padding="8dp"
             android:src="@drawable/ic_hamburger_menu"
-             />
+            app:tint="@android:color/white" />
 
     </LinearLayout>
 
@@ -178,6 +178,7 @@
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etProductName"
+                            style="@style/Widget.PI2DAM.TextInputEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Pastillas de Freno" />
@@ -206,6 +207,7 @@
                         android:layout_weight="1">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            style="@style/Widget.PI2DAM.TextInputEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Frenos" />
@@ -234,6 +236,7 @@
                         android:layout_weight="1">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            style="@style/Widget.PI2DAM.TextInputEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Malva SL." />
@@ -313,8 +316,9 @@
                         android:layout_marginStart="12dp">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            style="@style/Widget.PI2DAM.TextInputEditText"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
+                            android:layout_height="wrap_content"
                             android:inputType="numberDecimal"
                             android:text="90.00 €" />
 

@@ -94,6 +94,14 @@
             android:layout_height="wrap_content"
             android:text="@string/btn_create_product" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnExportStockPdf"
+            style="@style/Widget.PI2DAM.Button.Outlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/btn_export_stock_pdf" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvProducts"
             android:layout_width="match_parent"
