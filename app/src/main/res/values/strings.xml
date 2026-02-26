@@ -25,6 +25,15 @@
     <string name="btn_back">Volver</string>
 
     <string name="title_home">Pagina Principal</string>
+    <string name="home_greeting">Hola, %1$s</string>
+    <string name="home_greeting_fallback">Bienvenido</string>
+    <string name="home_role_admin">Admin</string>
+    <string name="home_role_worker">Empleado</string>
+    <string name="home_inventory_summary">Resumen inventario</string>
+    <string name="home_stat_products">Productos</string>
+    <string name="home_stat_units">Unidades</string>
+    <string name="home_stat_low_stock">Stock bajo</string>
+    <string name="home_stat_inventory_value">Valor inventario</string>
     <string name="hint_search">Buscar</string>
     <string name="filter_recent">Reciente</string>
     <string name="filter_low_stock">Stock Bajo</string>
@@ -145,6 +154,22 @@
     <string name="title_product_form">Producto</string>
     <string name="btn_create_product">Crear producto</string>
     <string name="btn_export_stock_pdf">Exportar stock (PDF)</string>
+    <string name="products_search_hint">Buscar por nombre, SKU, ubicación o proveedor</string>
+    <string name="products_filter_all">Todos</string>
+    <string name="products_filter_low_stock">Stock bajo</string>
+    <string name="products_supplier_filter_all">Proveedor: todos</string>
+    <string name="products_supplier_filter_with">Con proveedor</string>
+    <string name="products_supplier_filter_without">Sin proveedor</string>
+    <string name="products_sort_name">Orden: nombre</string>
+    <string name="products_sort_price_asc">Precio ↑</string>
+    <string name="products_sort_price_desc">Precio ↓</string>
+    <string name="products_summary">%1$d de %2$d productos · stock bajo: %3$d · sin proveedor: %4$d</string>
+    <string name="products_empty">No hay productos para este filtro</string>
+    <string name="products_supplier_unknown">Sin proveedor</string>
+    <string name="products_location_unknown">Sin ubicación</string>
+    <string name="products_stock_low_badge">Stock bajo</string>
+    <string name="products_stock_ok_badge">Stock OK</string>
+    <string name="products_row_subtitle">stock: %1$d · precio: %2$s € · %3$s · proveedor: %4$s</string>
 
     <string name="title_suppliers">Proveedores</string>
     <string name="title_supplier_form">Proveedor</string>

@@ -29,4 +29,6 @@
     <color name="menu_chip_bg">#FFFFFF</color>
     <color name="danger">#D92D20</color>
     <color name="danger_bg">#FEE4E2</color>
+    <color name="stock_low">#D92D20</color>
+    <color name="stock_ok">#15803D</color>
 </resources>

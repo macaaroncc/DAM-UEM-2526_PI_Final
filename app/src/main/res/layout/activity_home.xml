@@ -117,6 +117,25 @@
                 android:layout_marginTop="4dp"
                 android:textColor="@color/text_secondary"
                 tools:text="Admin · 24 feb 2026" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilSearchHome"
+                style="@style/Widget.PI2DAM.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="@string/hint_search"
+                app:endIconMode="custom"
+                app:endIconDrawable="@android:drawable/ic_menu_search">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etSearchHome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:imeOptions="actionSearch"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_secondary"
+                    android:textCursorDrawable="@null" />
+            </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.card.MaterialCardView

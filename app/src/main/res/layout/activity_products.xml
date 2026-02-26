@@ -100,14 +100,171 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/btn_export_stock_pdf" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilProductsSearch"
+            style="@style/Widget.PI2DAM.TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="@string/products_search_hint"
+            app:endIconMode="clear_text"
+            app:startIconDrawable="@android:drawable/ic_menu_search">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvProducts"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etProductsSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chipGroupProductsFilter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:chipSpacingHorizontal="8dp"
+                    app:singleSelection="true"
+                    app:selectionRequired="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipProductsFilterAll"
+                        style="@style/Widget.PI2DAM.MenuChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:checkable="true"
+                        android:text="@string/products_filter_all" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipProductsFilterLowStock"
+                        style="@style/Widget.PI2DAM.MenuChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checkable="true"
+                        android:text="@string/products_filter_low_stock" />
+
+                </com.google.android.material.chip.ChipGroup>
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chipGroupProductsSupplier"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:chipSpacingHorizontal="8dp"
+                    app:singleSelection="true"
+                    app:selectionRequired="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipProductsSupplierAll"
+                        style="@style/Widget.PI2DAM.MenuChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:checkable="true"
+                        android:text="@string/products_supplier_filter_all" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipProductsSupplierLinked"
+                        style="@style/Widget.PI2DAM.MenuChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checkable="true"
+                        android:text="@string/products_supplier_filter_with" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipProductsSupplierUnlinked"
+                        style="@style/Widget.PI2DAM.MenuChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checkable="true"
+                        android:text="@string/products_supplier_filter_without" />
+
+                </com.google.android.material.chip.ChipGroup>
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chipGroupProductsSort"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:chipSpacingHorizontal="8dp"
+                    app:singleSelection="true"
+                    app:selectionRequired="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipProductsSortName"
+                        style="@style/Widget.PI2DAM.MenuChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:checkable="true"
+                        android:text="@string/products_sort_name" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipProductsSortPriceAsc"
+                        style="@style/Widget.PI2DAM.MenuChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checkable="true"
+                        android:text="@string/products_sort_price_asc" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipProductsSortPriceDesc"
+                        style="@style/Widget.PI2DAM.MenuChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checkable="true"
+                        android:text="@string/products_sort_price_desc" />
+
+                </com.google.android.material.chip.ChipGroup>
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+        <TextView
+            android:id="@+id/tvProductsSummary"
+            style="@style/TextAppearance.PI2DAM.MenuSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            tools:text="10 de 24 productos · stock bajo: 3" />
+
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="12dp"
-            android:layout_weight="1"
-            tools:listitem="@layout/row_product" />
+            android:layout_marginTop="10dp"
+            android:layout_weight="1">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvProducts"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/row_product" />
+
+            <TextView
+                android:id="@+id/tvProductsEmpty"
+                style="@style/TextAppearance.PI2DAM.MenuSubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="@string/products_empty"
+                android:visibility="gone" />
+
+        </FrameLayout>
 
     </LinearLayout>
 

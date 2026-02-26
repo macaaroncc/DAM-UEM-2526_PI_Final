@@ -2,6 +2,7 @@ package com.example.pi2dam
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.inputmethod.EditorInfo
 import android.view.View
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -13,6 +14,8 @@ import com.example.pi2dam.model.EmployeeProfile.Companion.ROLE_ADMIN
 import com.example.pi2dam.model.Product
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.ListenerRegistration
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -36,6 +39,8 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var tvMonthUnits: TextView
     private lateinit var tvMonthOrders: TextView
     private lateinit var tvEmptyTopSold: TextView
+    private lateinit var tilSearchHome: TextInputLayout
+    private lateinit var etSearchHome: TextInputEditText
 
     private val esES = Locale.Builder().setLanguage("es").setRegion("ES").build()
     private val money = NumberFormat.getCurrencyInstance(esES)
@@ -54,6 +59,7 @@ class HomeActivity : AppCompatActivity() {
         findViewById<View>(R.id.btnHelp).setOnClickListener {
             startActivity(Intent(this, HelpActivity::class.java))
         }
+        setupHomeSearchNavigation()
 
         setupTopSoldRecyclerView()
     }
@@ -114,7 +120,28 @@ class HomeActivity : AppCompatActivity() {
         tvMonthUnits = findViewById(R.id.tvMonthUnits)
         tvMonthOrders = findViewById(R.id.tvMonthOrders)
         tvEmptyTopSold = findViewById(R.id.tvEmptyTopSold)
+        tilSearchHome = findViewById(R.id.tilSearchHome)
+        etSearchHome = findViewById(R.id.etSearchHome)
 
+    }
+
+    private fun setupHomeSearchNavigation() {
+        tilSearchHome.setEndIconOnClickListener { openProductsFromSearch() }
+        etSearchHome.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH || actionId == EditorInfo.IME_ACTION_DONE) {
+                openProductsFromSearch()
+                true
+            } else {
+                false
+            }
+        }
+    }
+
+    private fun openProductsFromSearch() {
+        val query = etSearchHome.text?.toString().orEmpty().trim()
+        startActivity(Intent(this, ProductsActivity::class.java).apply {
+            putExtra(ProductsActivity.EXTRA_INITIAL_QUERY, query)
+        })
     }
 
     private fun updateGreeting(profile: EmployeeProfile) {
