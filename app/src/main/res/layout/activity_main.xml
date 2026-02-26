@@ -23,55 +23,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.card.MaterialCardView
+    <ImageView
         android:id="@+id/cardLogo"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        app:cardBackgroundColor="@color/surface"
-        app:cardCornerRadius="70dp"
-        app:cardElevation="8dp"
-        app:cardUseCompatPadding="true"
+        android:layout_width="240dp"
+        android:layout_height="128dp"
+        android:contentDescription="@string/cd_logo"
+        android:scaleType="fitCenter"
+        android:src="@drawable/quickpart_banner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="@color/logo_stroke"
-        app:strokeWidth="2dp">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="@string/cd_logo"
-            android:padding="24dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_launcher_foreground"
-             />
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <TextView
-        android:id="@+id/tvBrand"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/brand_name"
-        android:textColor="@color/brand_orange"
-        android:textSize="44sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardLogo" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvTitle"
         style="@style/TextAppearance.PI2DAM.ScreenTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:text="@string/title_login"
         android:textColor="@color/text_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvBrand" />
+        app:layout_constraintTop_toBottomOf="@id/cardLogo" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilUser"

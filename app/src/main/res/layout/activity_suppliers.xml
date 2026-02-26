@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_background"
-    tools:context=".UsersActivity">
+    tools:context=".SuppliersActivity">
 
     <LinearLayout
         android:id="@+id/appbar"
@@ -47,8 +47,8 @@
             android:layout_height="40dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
-            android:focusable="true"
             android:contentDescription="Menu"
+            android:focusable="true"
             android:padding="8dp"
             android:src="@drawable/ic_hamburger_menu"
             app:tint="@android:color/white" />
@@ -71,7 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/title_users"
+            android:text="@string/title_suppliers"
             android:textColor="@color/text_primary" />
 
     </LinearLayout>
@@ -87,19 +87,19 @@
         app:layout_constraintTop_toBottomOf="@id/topRow">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnCreateUser"
+            android:id="@+id/btnCreateSupplier"
             style="@style/Widget.PI2DAM.Button.Primary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_create_user" />
+            android:text="@string/btn_create_supplier" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvUsers"
+            android:id="@+id/rvSuppliers"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="12dp"
             android:layout_weight="1"
-            tools:listitem="@layout/row_user" />
+            tools:listitem="@layout/row_supplier" />
 
     </LinearLayout>
 

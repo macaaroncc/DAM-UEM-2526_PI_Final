@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">PI2DAM</string>
 
-    <string name="brand_name">BAHJ</string>
+    <string name="brand_name">QuickPart</string>
     <string name="cd_logo">Logo</string>
 
     <string name="title_login">Iniciar Sesión</string>
@@ -98,6 +98,7 @@
     <string name="menu_home">Pagina Principal</string>
     <string name="menu_users">Usuarios</string>
     <string name="menu_products">Productos</string>
+    <string name="menu_suppliers">Proveedores</string>
     <string name="menu_orders">Pedidos (Proveedores)</string>
     <string name="menu_payment">Pago</string>
     <string name="menu_warehouses_map">Almacenes (Mapa)</string>
@@ -107,6 +108,7 @@
     <string name="menu_subtitle_home">Vista general e inventario</string>
     <string name="menu_subtitle_users">Gestiona equipo y permisos</string>
     <string name="menu_subtitle_products">Productos, stock y precios</string>
+    <string name="menu_subtitle_suppliers">Alta y baja de proveedores</string>
     <string name="menu_subtitle_orders">Pedidos a proveedores</string>
     <string name="menu_subtitle_payment">Tarjetas y pagos</string>
     <string name="menu_subtitle_warehouses">Ubicaciones y rutas</string>
@@ -131,6 +133,12 @@
     <string name="title_products">Productos</string>
     <string name="title_product_form">Producto</string>
     <string name="btn_create_product">Crear producto</string>
+
+    <string name="title_suppliers">Proveedores</string>
+    <string name="title_supplier_form">Proveedor</string>
+    <string name="btn_create_supplier">Crear proveedor</string>
+    <string name="hint_supplier_name">Nombre del proveedor</string>
+    <string name="supplier_none">Sin proveedor</string>
     <string name="hint_product_name">Nombre del producto</string>
     <string name="hint_sku">SKU</string>
     <string name="hint_location">Ubicación</string>

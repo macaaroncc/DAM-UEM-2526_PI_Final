@@ -70,6 +70,7 @@ class CreateOrderActivity : AppCompatActivity() {
                                 name = d.getString("name") ?: "",
                                 sku = d.getString("sku") ?: "",
                                 location = d.getString("location") ?: "",
+                                supplierId = d.getString("supplierId") ?: "",
                                 stock = d.getLong("stock") ?: 0L,
                                 price = d.getDouble("price") ?: 0.0,
                                 lowStockThreshold = d.getLong("lowStockThreshold") ?: 0L

@@ -39,6 +39,7 @@ class AppMenuSheet : BottomSheetDialogFragment() {
         }
         cardUsers.setOnClickListener { go(UsersActivity::class.java) }
         view.findViewById<View>(R.id.cardSheetProducts).setOnClickListener { go(ProductsActivity::class.java) }
+        view.findViewById<View>(R.id.cardSheetSuppliers).setOnClickListener { go(SuppliersActivity::class.java) }
         view.findViewById<View>(R.id.cardSheetOrders).setOnClickListener { go(OrdersActivity::class.java) }
         view.findViewById<View>(R.id.cardSheetPayment).setOnClickListener { go(PaymentActivity::class.java) }
         view.findViewById<View>(R.id.cardSheetWarehouses).setOnClickListener { go(WarehousesMapActivity::class.java) }
@@ -67,6 +68,7 @@ class AppMenuSheet : BottomSheetDialogFragment() {
 
             cardUsers.visibility = View.GONE
             disable(view.findViewById(R.id.cardSheetProducts))
+            disable(view.findViewById(R.id.cardSheetSuppliers))
             disable(view.findViewById(R.id.cardSheetOrders))
             disable(view.findViewById(R.id.cardSheetPayment))
             disable(view.findViewById(R.id.cardSheetWarehouses))

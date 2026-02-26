@@ -6,6 +6,7 @@ import com.example.pi2dam.model.EmployeeProfile.Companion.ROLE_WORKER
 import com.example.pi2dam.model.OrderItem
 import com.example.pi2dam.model.OrderStatus
 import com.example.pi2dam.model.Product
+import com.example.pi2dam.model.Supplier
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.Tasks
 import com.google.firebase.firestore.FieldValue
@@ -185,6 +186,7 @@ object PiRepository {
             "name" to product.name.trim(),
             "sku" to product.sku.trim(),
             "location" to product.location.trim(),
+            "supplierId" to product.supplierId,
             "stock" to product.stock,
             "price" to product.price,
             "lowStockThreshold" to product.lowStockThreshold,
@@ -195,6 +197,48 @@ object PiRepository {
 
     fun deleteProduct(productId: String): Task<Void> {
         return FirebaseRefs.db.collection(FirebaseRefs.COL_PRODUCTS).document(productId).delete()
+    }
+
+    fun upsertSupplier(supplier: Supplier): Task<Void> {
+        val col = FirebaseRefs.db.collection(FirebaseRefs.COL_SUPPLIERS)
+        val ref = if (supplier.id.isBlank()) col.document() else col.document(supplier.id)
+
+        val data = hashMapOf(
+            "name" to supplier.name.trim(),
+            "updatedAt" to FieldValue.serverTimestamp()
+        )
+        return ref.set(data)
+    }
+
+    /**
+     * Borra un proveedor y desconecta los productos que lo referencien.
+     * Nota: pensado para un volumen pequeño (batch <= 500 actualizaciones).
+     */
+    fun deleteSupplier(supplierId: String): Task<Void> {
+        val db = FirebaseRefs.db
+        val supplierRef = db.collection(FirebaseRefs.COL_SUPPLIERS).document(supplierId)
+
+        return db.collection(FirebaseRefs.COL_PRODUCTS)
+            .whereEqualTo("supplierId", supplierId)
+            .get()
+            .continueWithTask { t ->
+                val snap = t.result
+                val batch = db.batch()
+
+                snap?.documents?.forEach { d ->
+                    val prodRef = db.collection(FirebaseRefs.COL_PRODUCTS).document(d.id)
+                    batch.update(
+                        prodRef,
+                        mapOf(
+                            "supplierId" to "",
+                            "updatedAt" to FieldValue.serverTimestamp()
+                        )
+                    )
+                }
+
+                batch.delete(supplierRef)
+                batch.commit()
+            }
     }
 
     fun createOrder(createdByUid: String, items: List<OrderItem>): Task<String> {

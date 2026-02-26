@@ -2,17 +2,22 @@ package com.example.pi2dam
 
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.pi2dam.model.Product
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 
 class ProductFormActivity : AppCompatActivity() {
 
+    private data class SupplierOption(val id: String, val label: String)
+
     private var editingId: String? = null
+    private var supplierOptions: List<SupplierOption> = emptyList()
+    private var pendingSupplierId: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +31,7 @@ class ProductFormActivity : AppCompatActivity() {
         val etName = findViewById<TextInputEditText>(R.id.etName)
         val etSku = findViewById<TextInputEditText>(R.id.etSku)
         val etLocation = findViewById<TextInputEditText>(R.id.etLocation)
+        val spSupplier = findViewById<Spinner>(R.id.spSupplier)
         val etStock = findViewById<TextInputEditText>(R.id.etStock)
         val etPrice = findViewById<TextInputEditText>(R.id.etPrice)
         val etLow = findViewById<TextInputEditText>(R.id.etLowStock)
@@ -34,6 +40,37 @@ class ProductFormActivity : AppCompatActivity() {
         findViewById<MaterialButton>(R.id.btnDelete).visibility = if (isEdit) View.VISIBLE else View.GONE
 
         AppMenu.bind(this)
+
+        fun setSupplierSelection(supplierId: String) {
+            if (supplierOptions.isEmpty()) {
+                pendingSupplierId = supplierId
+                return
+            }
+            val idx = supplierOptions.indexOfFirst { it.id == supplierId }
+            spSupplier.setSelection(if (idx >= 0) idx else 0)
+        }
+
+        // Cargar proveedores en spinner
+        FirebaseRefs.db.collection(FirebaseRefs.COL_SUPPLIERS).get()
+            .addOnSuccessListener { snap ->
+                val options = mutableListOf(SupplierOption("", getString(R.string.supplier_none)))
+                options += snap.documents
+                    .map { d -> SupplierOption(d.id, d.getString("name") ?: "") }
+                    .filter { it.label.isNotBlank() }
+                    .sortedBy { it.label.lowercase() }
+
+                supplierOptions = options
+                spSupplier.adapter = ArrayAdapter(
+                    this,
+                    android.R.layout.simple_spinner_dropdown_item,
+                    supplierOptions.map { it.label }
+                )
+
+                pendingSupplierId?.let {
+                    setSupplierSelection(it)
+                    pendingSupplierId = null
+                }
+            }
 
         if (isEdit) {
             val id = editingId!!
@@ -45,6 +82,9 @@ class ProductFormActivity : AppCompatActivity() {
                     etStock.setText((d.getLong("stock") ?: 0L).toString())
                     etPrice.setText((d.getDouble("price") ?: 0.0).toString())
                     etLow.setText((d.getLong("lowStockThreshold") ?: 0L).toString())
+
+                    val supplierId = d.getString("supplierId") ?: ""
+                    setSupplierSelection(supplierId)
                 }
         }
 
@@ -57,6 +97,7 @@ class ProductFormActivity : AppCompatActivity() {
 
             val sku = etSku.text?.toString().orEmpty().trim()
             val location = etLocation.text?.toString().orEmpty().trim()
+            val supplierId = supplierOptions.getOrNull(spSupplier.selectedItemPosition)?.id.orEmpty()
             val stock = etStock.text?.toString().orEmpty().trim().toLongOrNull() ?: 0L
             val price = etPrice.text?.toString().orEmpty().trim().toDoubleOrNull() ?: 0.0
             val low = etLow.text?.toString().orEmpty().trim().toLongOrNull() ?: 0L
@@ -66,6 +107,7 @@ class ProductFormActivity : AppCompatActivity() {
                 name = name,
                 sku = sku,
                 location = location,
+                supplierId = supplierId,
                 stock = stock,
                 price = price,
                 lowStockThreshold = low

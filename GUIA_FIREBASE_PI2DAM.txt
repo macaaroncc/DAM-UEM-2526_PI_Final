@@ -39,7 +39,7 @@ Si el package no coincide con la app, el login/Firestore fallarán.
 
 3) Estructura de Firestore (colecciones + campos)
 ------------------------------------------------
-La app usa 3 colecciones:
+La app usa 4 colecciones:
 
 3.1 users/{uid}
 - Documento cuyo ID = uid de Firebase Auth
@@ -62,7 +62,12 @@ La app usa 3 colecciones:
   lowStockThreshold: number (int)
   updatedAt: timestamp
 
-3.3 orders/{orderId}
+3.3 suppliers/{supplierId}
+- Campos esperados:
+  name: string
+  updatedAt: timestamp
+
+3.4 orders/{orderId}
 - Campos esperados:
   status: string ("CREATED" o "CANCELLED")
   createdByUid: string
@@ -120,6 +125,11 @@ service cloud.firestore {
     match /products/{id} {
       allow read: if isActiveEmployee();
       // Si quieres que SOLO admin cree/edite/borrar productos, cambia por: if isAdmin();
+      allow create, update, delete: if isActiveEmployee();
+    }
+
+    match /suppliers/{id} {
+      allow read: if isActiveEmployee();
       allow create, update, delete: if isActiveEmployee();
     }
 

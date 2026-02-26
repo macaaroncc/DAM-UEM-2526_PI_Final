@@ -1,0 +1,43 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() { return request.auth != null; }
+    function myUid() { return request.auth.uid; }
+
+    function myProfile() {
+      return get(/databases/$(database)/documents/users/$(myUid()));
+    }
+
+    function isActiveEmployee() {
+      return signedIn() && myProfile().exists() && myProfile().data.active == true;
+    }
+
+    function isAdmin() {
+      return isActiveEmployee() && myProfile().data.role == 'admin';
+    }
+
+    match /users/{uid} {
+      allow read: if signedIn();
+      allow create: if (signedIn() && uid == myUid()) || isAdmin();
+      allow update, delete: if isAdmin();
+    }
+
+    match /products/{id} {
+      allow read: if isActiveEmployee();
+      allow create, update, delete: if isActiveEmployee();
+    }
+
+    match /suppliers/{id} {
+      allow read: if isActiveEmployee();
+      allow create, update, delete: if isActiveEmployee();
+    }
+
+    match /orders/{id} {
+      allow read: if isActiveEmployee();
+      allow create: if isActiveEmployee();
+      allow update: if isAdmin() || (isActiveEmployee() && resource.data.createdByUid == myUid());
+      allow delete: if isAdmin();
+    }
+  }
+}

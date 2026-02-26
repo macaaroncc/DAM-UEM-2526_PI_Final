@@ -25,8 +25,7 @@
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:contentDescription="@string/cd_logo"
-            android:src="@drawable/ic_launcher_foreground"
-            app:tint="@color/brand_orange" />
+            android:src="@drawable/quickpart_mark" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -117,6 +116,18 @@
                     android:layout_height="wrap_content" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/label_supplier"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spSupplier"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.PI2DAM.TextInputLayout"

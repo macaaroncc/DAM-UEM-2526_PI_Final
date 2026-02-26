@@ -117,6 +117,7 @@ class HomeActivity : AppCompatActivity() {
                         name = doc.getString("name").orEmpty(),
                         sku = doc.getString("sku").orEmpty(),
                         location = doc.getString("location").orEmpty(),
+                        supplierId = doc.getString("supplierId").orEmpty(),
                         stock = doc.getLong("stock") ?: 0,
                         price = doc.getDouble("price") ?: 0.0,
                         lowStockThreshold = doc.getLong("lowStockThreshold") ?: 0

@@ -9,5 +9,6 @@ object FirebaseRefs {
 
     const val COL_USERS = "users"
     const val COL_PRODUCTS = "products"
+    const val COL_SUPPLIERS = "suppliers"
     const val COL_ORDERS = "orders"
 }

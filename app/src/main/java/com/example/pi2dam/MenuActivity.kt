@@ -67,6 +67,7 @@ class MenuActivity : AppCompatActivity() {
         findViewById<View>(R.id.cardMenuHome).setOnClickListener { goHome() }
         findViewById<View>(R.id.cardMenuUsers).setOnClickListener { startActivity(Intent(this, UsersActivity::class.java)) }
         findViewById<View>(R.id.cardMenuProducts).setOnClickListener { startActivity(Intent(this, ProductsActivity::class.java)) }
+        findViewById<View>(R.id.cardMenuSuppliers).setOnClickListener { startActivity(Intent(this, SuppliersActivity::class.java)) }
         findViewById<View>(R.id.cardMenuOrders).setOnClickListener { startActivity(Intent(this, OrdersActivity::class.java)) }
         findViewById<View>(R.id.cardMenuPayment).setOnClickListener { startActivity(Intent(this, PaymentActivity::class.java)) }
         findViewById<View>(R.id.cardMenuWarehouses).setOnClickListener {
@@ -184,6 +185,12 @@ class MenuActivity : AppCompatActivity() {
             MenuEntry(
                 view = findViewById(R.id.cardMenuProducts),
                 keywords = k(getString(R.string.menu_products), getString(R.string.menu_subtitle_products), getString(R.string.title_products)),
+                category = Category.SECTION,
+                requiresLogin = true
+            ),
+            MenuEntry(
+                view = findViewById(R.id.cardMenuSuppliers),
+                keywords = k(getString(R.string.menu_suppliers), getString(R.string.menu_subtitle_suppliers), getString(R.string.title_suppliers)),
                 category = Category.SECTION,
                 requiresLogin = true
             ),
