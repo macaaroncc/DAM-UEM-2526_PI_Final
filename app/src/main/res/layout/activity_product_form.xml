@@ -51,7 +51,7 @@
             android:contentDescription="Menu"
             android:padding="8dp"
             android:src="@drawable/ic_hamburger_menu"
-             />
+            app:tint="@android:color/white" />
 
     </LinearLayout>
 
@@ -98,6 +98,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etName"
+                    style="@style/Widget.PI2DAM.TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
@@ -112,6 +113,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etSku"
+                    style="@style/Widget.PI2DAM.TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
@@ -138,6 +140,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etLocation"
+                    style="@style/Widget.PI2DAM.TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
@@ -152,6 +155,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etStock"
+                    style="@style/Widget.PI2DAM.TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number" />
@@ -167,6 +171,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etPrice"
+                    style="@style/Widget.PI2DAM.TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal" />
@@ -182,6 +187,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etLowStock"
+                    style="@style/Widget.PI2DAM.TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number" />

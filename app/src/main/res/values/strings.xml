@@ -84,6 +84,15 @@
     <string name="help_no_email_app">No hay app de correo. Email copiado al portapapeles.</string>
 
     <string name="title_menu">Menú</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="dashboard_month_summary">Resumen del mes</string>
+    <string name="dashboard_total_investment">Inversión total</string>
+    <string name="dashboard_total_units">Unidades</string>
+    <string name="dashboard_top_products">Top productos (por unidades)</string>
+    <string name="dashboard_empty">Sin datos para este mes</string>
+    <string name="dashboard_orders_count">Pedidos: %1$d (Cancelados: %2$d)</string>
+    <string name="title_chat">Chat de Stock</string>
+    <string name="chat_hint">Mensaje…</string>
     <string name="menu_subtitle">Todo lo que necesitas, a un toque.</string>
     <string name="menu_search_hint">Buscar en el menú</string>
     <string name="menu_quick_actions">Accesos rápidos</string>
@@ -99,6 +108,8 @@
     <string name="menu_users">Usuarios</string>
     <string name="menu_products">Productos</string>
     <string name="menu_suppliers">Proveedores</string>
+    <string name="menu_dashboard">Dashboard</string>
+    <string name="menu_chat">Chat (stock)</string>
     <string name="menu_orders">Pedidos (Proveedores)</string>
     <string name="menu_payment">Pago</string>
     <string name="menu_warehouses_map">Almacenes (Mapa)</string>
@@ -133,6 +144,7 @@
     <string name="title_products">Productos</string>
     <string name="title_product_form">Producto</string>
     <string name="btn_create_product">Crear producto</string>
+    <string name="btn_export_stock_pdf">Exportar stock (PDF)</string>
 
     <string name="title_suppliers">Proveedores</string>
     <string name="title_supplier_form">Proveedor</string>
@@ -149,6 +161,7 @@
     <string name="title_orders">Pedidos (Proveedores)</string>
     <string name="title_create_order">Nuevo pedido</string>
     <string name="btn_create_order">Crear pedido</string>
+    <string name="btn_export_orders_pdf">Exportar pedidos del mes (PDF)</string>
     <string name="btn_submit_order">Hacer pedido</string>
     <string name="btn_cancel_order">Cancelar pedido</string>
 

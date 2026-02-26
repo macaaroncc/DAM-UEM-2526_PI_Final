@@ -59,6 +59,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etUser"
+            style="@style/Widget.PI2DAM.TextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress" />
@@ -79,6 +80,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etPassword"
+            style="@style/Widget.PI2DAM.TextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword" />

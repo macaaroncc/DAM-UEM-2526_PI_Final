@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import com.example.pi2dam.model.EmployeeProfile.Companion.ROLE_ADMIN
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.android.material.button.MaterialButton
 
 class AppMenuSheet : BottomSheetDialogFragment() {
 
@@ -23,30 +24,32 @@ class AppMenuSheet : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val host = activity ?: return
 
+        val btnUsers = view.findViewById<MaterialButton>(R.id.btnSheetUsers)
+        btnUsers.visibility = if (Session.employee?.role == ROLE_ADMIN) View.VISIBLE else View.GONE
+
         fun go(cls: Class<*>) {
             startActivity(Intent(host, cls))
             dismiss()
         }
 
-        val cardUsers = view.findViewById<View>(R.id.cardSheetUsers)
-        cardUsers.visibility = if (Session.employee?.role == ROLE_ADMIN) View.VISIBLE else View.GONE
-
-        view.findViewById<View>(R.id.cardSheetHome).setOnClickListener {
+        view.findViewById<MaterialButton>(R.id.btnSheetHome).setOnClickListener {
             startActivity(Intent(host, HomeActivity::class.java).apply {
                 flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             })
             dismiss()
         }
-        cardUsers.setOnClickListener { go(UsersActivity::class.java) }
-        view.findViewById<View>(R.id.cardSheetProducts).setOnClickListener { go(ProductsActivity::class.java) }
-        view.findViewById<View>(R.id.cardSheetSuppliers).setOnClickListener { go(SuppliersActivity::class.java) }
-        view.findViewById<View>(R.id.cardSheetOrders).setOnClickListener { go(OrdersActivity::class.java) }
-        view.findViewById<View>(R.id.cardSheetPayment).setOnClickListener { go(PaymentActivity::class.java) }
-        view.findViewById<View>(R.id.cardSheetWarehouses).setOnClickListener { go(WarehousesMapActivity::class.java) }
-        view.findViewById<View>(R.id.cardSheetHelp).setOnClickListener { go(HelpActivity::class.java) }
-        view.findViewById<View>(R.id.btnSheetHelpIcon).setOnClickListener { go(HelpActivity::class.java) }
 
-        view.findViewById<View>(R.id.btnSheetLogout).setOnClickListener {
+        btnUsers.setOnClickListener { go(UsersActivity::class.java) }
+        view.findViewById<MaterialButton>(R.id.btnSheetProducts).setOnClickListener { go(ProductsActivity::class.java) }
+        view.findViewById<MaterialButton>(R.id.btnSheetSuppliers).setOnClickListener { go(SuppliersActivity::class.java) }
+        view.findViewById<MaterialButton>(R.id.btnSheetDashboard).setOnClickListener { go(DashboardActivity::class.java) }
+        view.findViewById<MaterialButton>(R.id.btnSheetChat).setOnClickListener { go(ChatActivity::class.java) }
+        view.findViewById<MaterialButton>(R.id.btnSheetOrders).setOnClickListener { go(OrdersActivity::class.java) }
+        view.findViewById<MaterialButton>(R.id.btnSheetPayment).setOnClickListener { go(PaymentActivity::class.java) }
+        view.findViewById<MaterialButton>(R.id.btnSheetWarehouses).setOnClickListener { go(WarehousesMapActivity::class.java) }
+        view.findViewById<MaterialButton>(R.id.btnSheetHelp).setOnClickListener { go(HelpActivity::class.java) }
+
+        view.findViewById<MaterialButton>(R.id.btnSheetLogout).setOnClickListener {
             FirebaseRefs.auth.signOut()
             Session.clear()
             startActivity(Intent(host, MainActivity::class.java).apply {
@@ -55,27 +58,17 @@ class AppMenuSheet : BottomSheetDialogFragment() {
             dismiss()
         }
 
-        view.findViewById<View>(R.id.chipSheetCreateOrder).setOnClickListener { go(CreateOrderActivity::class.java) }
-        view.findViewById<View>(R.id.chipSheetCreateProduct).setOnClickListener { go(ProductFormActivity::class.java) }
-        view.findViewById<View>(R.id.chipSheetResetPassword).setOnClickListener { go(ResetPasswordActivity::class.java) }
-
         // Si no hay sesión, mostramos ayuda y logout como "volver a login".
         if (FirebaseRefs.auth.currentUser == null) {
-            fun disable(v: View) {
-                v.isEnabled = false
-                v.alpha = 0.5f
-            }
-
-            cardUsers.visibility = View.GONE
-            disable(view.findViewById(R.id.cardSheetProducts))
-            disable(view.findViewById(R.id.cardSheetSuppliers))
-            disable(view.findViewById(R.id.cardSheetOrders))
-            disable(view.findViewById(R.id.cardSheetPayment))
-            disable(view.findViewById(R.id.cardSheetWarehouses))
-            disable(view.findViewById(R.id.chipSheetCreateOrder))
-            disable(view.findViewById(R.id.chipSheetCreateProduct))
-
-            view.findViewById<View>(R.id.btnSheetLogout).setOnClickListener {
+            btnUsers.visibility = View.GONE
+            view.findViewById<MaterialButton>(R.id.btnSheetProducts).isEnabled = false
+            view.findViewById<MaterialButton>(R.id.btnSheetSuppliers).isEnabled = false
+            view.findViewById<MaterialButton>(R.id.btnSheetDashboard).isEnabled = false
+            view.findViewById<MaterialButton>(R.id.btnSheetChat).isEnabled = false
+            view.findViewById<MaterialButton>(R.id.btnSheetOrders).isEnabled = false
+            view.findViewById<MaterialButton>(R.id.btnSheetPayment).isEnabled = false
+            view.findViewById<MaterialButton>(R.id.btnSheetWarehouses).isEnabled = false
+            view.findViewById<MaterialButton>(R.id.btnSheetLogout).setOnClickListener {
                 Toast.makeText(host, R.string.help_need_login, Toast.LENGTH_SHORT).show()
                 dismiss()
             }

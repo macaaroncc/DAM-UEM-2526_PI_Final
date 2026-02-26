@@ -59,8 +59,9 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etUser"
+            style="@style/Widget.PI2DAM.TextInputEditText"
             android:layout_width="match_parent"
-            android:layout_height="57dp"
+            android:layout_height="wrap_content"
             android:inputType="textPersonName" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -78,8 +79,9 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etEmail"
+            style="@style/Widget.PI2DAM.TextInputEditText"
             android:layout_width="match_parent"
-            android:layout_height="44dp"
+            android:layout_height="wrap_content"
             android:inputType="textEmailAddress" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -98,8 +100,9 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etPassword"
+            style="@style/Widget.PI2DAM.TextInputEditText"
             android:layout_width="match_parent"
-            android:layout_height="57dp"
+            android:layout_height="wrap_content"
             android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -118,8 +121,9 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etRepeatPassword"
+            style="@style/Widget.PI2DAM.TextInputEditText"
             android:layout_width="match_parent"
-            android:layout_height="39dp"
+            android:layout_height="wrap_content"
             android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
