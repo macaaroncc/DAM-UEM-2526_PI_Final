@@ -22,12 +22,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:contentDescription="@string/cd_logo"
             android:src="@drawable/quickpart_mark" />
 
-        <TextView
+                        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -36,7 +36,7 @@
             android:textSize="22sp"
             android:textStyle="bold" />
 
-        <Space
+<Space
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_weight="1" />
