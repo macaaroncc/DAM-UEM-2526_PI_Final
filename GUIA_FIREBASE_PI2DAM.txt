@@ -39,7 +39,7 @@ Si el package no coincide con la app, el login/Firestore fallarán.
 
 3) Estructura de Firestore (colecciones + campos)
 ------------------------------------------------
-La app usa 4 colecciones:
+La app usa 5 colecciones:
 
 3.1 users/{uid}
 - Documento cuyo ID = uid de Firebase Auth
@@ -77,6 +77,15 @@ La app usa 4 colecciones:
     - priceSnapshot: number (double)
   createdAt: timestamp
   cancelledAt: timestamp o null
+
+3.5 chats/{chatId}/messages/{msgId}
+- Subcolección dentro de un documento de chat (ej: chats/stock/messages)
+- Campos esperados:
+  senderUid: string
+  senderName: string
+  senderRole: string
+  text: string
+  createdAt: timestamp
 
 Notas importantes:
 - Al crear pedido, la app descuenta stock.
@@ -142,6 +151,16 @@ service cloud.firestore {
 
       // Borrar pedidos (opcional)
       allow delete: if isAdmin();
+    }
+
+    // Chat (documento padre + subcolección messages)
+    match /chats/{chatId} {
+      allow read: if isActiveEmployee();
+
+      match /messages/{msgId} {
+        allow read: if isActiveEmployee();
+        allow create: if isActiveEmployee();
+      }
     }
   }
 }
