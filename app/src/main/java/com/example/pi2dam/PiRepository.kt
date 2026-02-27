@@ -15,8 +15,8 @@ import com.google.firebase.firestore.QuerySnapshot
 
 object PiRepository {
 
-    private const val MAX_ADMINS = 2
-    private const val MAX_WORKERS = 5
+    private const val MAX_ADMINS = 100
+    private const val MAX_WORKERS = 100
 
     private fun getActiveRoleCounts(): Task<Pair<Int, Int>> {
         val users = FirebaseRefs.db.collection(FirebaseRefs.COL_USERS)

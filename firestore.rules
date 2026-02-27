@@ -2,36 +2,60 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    function signedIn() { return request.auth != null; }
+    function signedIn() {
+      return request.auth != null;
+    }
 
-    // ── Usuarios ──
+    function myUid() {
+      return request.auth.uid;
+    }
+
+    function getProfileData() {
+      return get(/databases/$(database)/documents/users/$(myUid())).data;
+    }
+
+    function isActiveEmployee() {
+      return signedIn() && getProfileData().active == true;
+    }
+
+    function isAdmin() {
+      return isActiveEmployee() && getProfileData().role == 'admin';
+    }
+
     match /users/{uid} {
       allow read: if signedIn();
-      allow create, update, delete: if signedIn();
+      
+      allow create: if (signedIn() && uid == myUid()) || isAdmin();
+      
+      allow update, delete: if isAdmin();
     }
 
-    // ── Productos ──
     match /products/{id} {
-      allow read, write: if signedIn();
+      allow read, create, update, delete: if isActiveEmployee();
     }
 
-    // ── Proveedores ──
-    match /suppliers/{id} {
-      allow read, write: if signedIn();
+    match /suppliers/{supplierId} {
+      allow read: if isActiveEmployee();
+      allow create, update, delete: if isAdmin();
     }
 
-    // ── Pedidos ──
     match /orders/{id} {
-      allow read, write: if signedIn();
+      allow read, create: if isActiveEmployee();
+      allow update: if isAdmin() || (isActiveEmployee() && resource.data.createdByUid == myUid());
+      allow delete: if isAdmin();
     }
-
-    // ── Chat ──
-    match /chats/{chatId} {
-      allow read, write: if signedIn();
-
-      match /messages/{msgId} {
-        allow read, write: if signedIn();
-      }
+    
+     // 5. CHAT (Nueva sección integrada)
+    // Cambia 'chats' y 'messages' si tus constantes son diferentes
+    match /chats/{chatId}/messages/{messageId} {
+      // Cualquier empleado activo puede leer y escribir
+      allow read, create: if isActiveEmployee();
+      
+      // Opcional: Permitir borrar solo si eres admin
+      allow delete: if isAdmin();
+      
+      // Opcional: Prohibir edición (para evitar alterar historial)
+      allow update: if false; 
     }
   }
 }
